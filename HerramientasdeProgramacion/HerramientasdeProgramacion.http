@@ -1,0 +1,6 @@
+@HerramientasdeProgramacion_HostAddress = http://localhost:5014
+
+GET {{HerramientasdeProgramacion_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

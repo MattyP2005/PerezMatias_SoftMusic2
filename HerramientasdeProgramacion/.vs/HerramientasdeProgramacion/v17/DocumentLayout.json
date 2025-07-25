@@ -1,0 +1,292 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BB11753C-72FE-4CF0-9177-9D67E7EA5547}|..\\HerramientasdeProgramacion.MVC\\HerramientasdeProgramacion.MVC.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion.mvc\\controllers\\cancionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB11753C-72FE-4CF0-9177-9D67E7EA5547}|..\\HerramientasdeProgramacion.MVC\\HerramientasdeProgramacion.MVC.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion.mvc\\controllers\\artistascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB11753C-72FE-4CF0-9177-9D67E7EA5547}|..\\HerramientasdeProgramacion.MVC\\HerramientasdeProgramacion.MVC.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion.mvc\\controllers\\albumescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07C1013E-1B20-41B7-AA99-921EFBEF6208}|..\\HerramientasdeProgramacion.Consumer\\HerramientasdeProgramacion.Consumer.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion.consumer\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|solutionrelative:controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion\\controllers\\cancionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|solutionrelative:controllers\\cancionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion\\controllers\\artistascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|solutionrelative:controllers\\artistascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion\\controllers\\albumescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|solutionrelative:controllers\\albumescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion\\controllers\\dtos\\createusuariodtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|solutionrelative:controllers\\dtos\\createusuariodtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion\\controllers\\dtos\\createcanciondtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|solutionrelative:controllers\\dtos\\createcanciondtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion\\controllers\\dtos\\createartistadtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|solutionrelative:controllers\\dtos\\createartistadtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion\\controllers\\dtos\\createalbumdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|solutionrelative:controllers\\dtos\\createalbumdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion\\services\\planservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|solutionrelative:services\\planservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion\\data\\sqlserverhdpdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|solutionrelative:data\\sqlserverhdpdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CancionesController.cs",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Controllers\\CancionesController.cs",
+              "RelativeDocumentMoniker": "..\\HerramientasdeProgramacion.MVC\\Controllers\\CancionesController.cs",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Controllers\\CancionesController.cs",
+              "RelativeToolTip": "..\\HerramientasdeProgramacion.MVC\\Controllers\\CancionesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T06:45:25.56Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ArtistasController.cs",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Controllers\\ArtistasController.cs",
+              "RelativeDocumentMoniker": "..\\HerramientasdeProgramacion.MVC\\Controllers\\ArtistasController.cs",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Controllers\\ArtistasController.cs",
+              "RelativeToolTip": "..\\HerramientasdeProgramacion.MVC\\Controllers\\ArtistasController.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAswGgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T06:23:40.495Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AlbumesController.cs",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Controllers\\AlbumesController.cs",
+              "RelativeDocumentMoniker": "..\\HerramientasdeProgramacion.MVC\\Controllers\\AlbumesController.cs",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Controllers\\AlbumesController.cs",
+              "RelativeToolTip": "..\\HerramientasdeProgramacion.MVC\\Controllers\\AlbumesController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T06:09:25.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ArtistasController.cs",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Controllers\\ArtistasController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ArtistasController.cs",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Controllers\\ArtistasController.cs",
+              "RelativeToolTip": "Controllers\\ArtistasController.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAkwE4AAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T06:05:27.81Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AlbumesController.cs",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Controllers\\AlbumesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AlbumesController.cs",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Controllers\\AlbumesController.cs",
+              "RelativeToolTip": "Controllers\\AlbumesController.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAgwDwAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T06:04:59.359Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CancionesController.cs",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Controllers\\CancionesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CancionesController.cs",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Controllers\\CancionesController.cs",
+              "RelativeToolTip": "Controllers\\CancionesController.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAgwEwAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T05:23:29.243Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.Consumer\\Class1.cs",
+              "RelativeDocumentMoniker": "..\\HerramientasdeProgramacion.Consumer\\Class1.cs",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.Consumer\\Class1.cs",
+              "RelativeToolTip": "..\\HerramientasdeProgramacion.Consumer\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T05:30:32.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CreateUsuarioDTOs.cs",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Controllers\\DTOs\\CreateUsuarioDTOs.cs",
+              "RelativeDocumentMoniker": "Controllers\\DTOs\\CreateUsuarioDTOs.cs",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Controllers\\DTOs\\CreateUsuarioDTOs.cs",
+              "RelativeToolTip": "Controllers\\DTOs\\CreateUsuarioDTOs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T06:03:50.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UsuariosController.cs",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Controllers\\UsuariosController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsuariosController.cs",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Controllers\\UsuariosController.cs",
+              "RelativeToolTip": "Controllers\\UsuariosController.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAowEQAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T05:25:23.493Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CreateCancionDTOs.cs",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Controllers\\DTOs\\CreateCancionDTOs.cs",
+              "RelativeDocumentMoniker": "Controllers\\DTOs\\CreateCancionDTOs.cs",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Controllers\\DTOs\\CreateCancionDTOs.cs",
+              "RelativeToolTip": "Controllers\\DTOs\\CreateCancionDTOs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T06:02:40.148Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CreateArtistaDTOs.cs",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Controllers\\DTOs\\CreateArtistaDTOs.cs",
+              "RelativeDocumentMoniker": "Controllers\\DTOs\\CreateArtistaDTOs.cs",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Controllers\\DTOs\\CreateArtistaDTOs.cs",
+              "RelativeToolTip": "Controllers\\DTOs\\CreateArtistaDTOs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T06:01:53.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CreateAlbumDTOs.cs",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Controllers\\DTOs\\CreateAlbumDTOs.cs",
+              "RelativeDocumentMoniker": "Controllers\\DTOs\\CreateAlbumDTOs.cs",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Controllers\\DTOs\\CreateAlbumDTOs.cs",
+              "RelativeToolTip": "Controllers\\DTOs\\CreateAlbumDTOs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T06:01:14.203Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PlanServices.cs",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Services\\PlanServices.cs",
+              "RelativeDocumentMoniker": "Services\\PlanServices.cs",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Services\\PlanServices.cs",
+              "RelativeToolTip": "Services\\PlanServices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T05:22:40.008Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "SqlServerHdPDbContext.cs",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Data\\SqlServerHdPDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\SqlServerHdPDbContext.cs",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Data\\SqlServerHdPDbContext.cs",
+              "RelativeToolTip": "Data\\SqlServerHdPDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T03:36:33.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-25T02:43:12.342Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T02:39:53.056Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

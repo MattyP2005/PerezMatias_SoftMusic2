@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Nuevo perfil",
+    "Projects": [
+      {
+        "Path": "HerramientasdeProgramacion.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "..\\HerramientasdeProgramacion.MVC\\HerramientasdeProgramacion.MVC.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
