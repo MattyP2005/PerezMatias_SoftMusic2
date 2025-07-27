@@ -1,117 +1,86 @@
 ﻿using HerramientasdeProgramacion.API.Controllers.DTOs;
 using HerramientasdeProgramacion.API.Data;
 using HerramientasdeProgramacion.Modelos;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace HerramientasdeProgramacion.API.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("api[controller]")]
     public class AlbumesController : ControllerBase
     {
         private readonly SqlServerHdPDbContext _context;
-        private readonly IWebHostEnvironment _env;
 
-        public AlbumesController(SqlServerHdPDbContext context, IWebHostEnvironment env)
+        public AlbumesController(SqlServerHdPDbContext context)
         {
             _context = context;
-            _env = env;
         }
 
-        // GET: api/AlbumApi
+        // GET: api/Albumes
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAlbumes()
         {
-            var albums = _context.Albumes
-                .Include(a => a.Artista)
-                .Select(a => new
-                {
-                    a.Id,
-                    a.Titulo,
-                })
-                .ToList();
-
-            return Ok(albums);
+            var albumes = _context.Albumes.ToList();
+            return Ok(albumes);
         }
 
-        // GET: api/AlbumApi/5
+        // GET: api/Albumes/5
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
-        {
-            var album = _context.Albumes
-                .Include(a => a.Artista)
-                .Where(a => a.Id == id)
-                .Select(a => new
-                {
-                    a.Id,
-                    a.Titulo,
-                })
-                .FirstOrDefault();
-
-            if (album == null)
-                return NotFound();
-
-            return Ok(album);
-        }
-
-        // POST: api/AlbumApi
-        [HttpPost]
-        public IActionResult Create([FromBody] CreateAlbumDTOs dto)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var email = User.Identity?.Name;
-            var artista = _context.Usuarios.FirstOrDefault(u => u.Email == email);
-
-            if (artista == null)
-                return Unauthorized();
-
-            var album = new Album
-            {
-                Titulo = dto.Titulo,
-                FechaLanzamiento = DateTime.Now, // asignación automática
-                ArtistaId = artista.Id           // se asocia al usuario logueado
-            };
-
-            _context.Albumes.Add(album);
-            _context.SaveChanges();
-
-            return CreatedAtAction(nameof(GetById), new { id = album.Id }, new { album.Id });
-        }
-
-        // PUT: api/AlbumApi/5
-        [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] CreateAlbumDTO dto)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var album = _context.Albumes.FirstOrDefault(a => a.Id == id);
-            if (album == null)
-                return NotFound();
-
-            // Solo se puede cambiar el título
-            album.Titulo = dto.Titulo;
-
-            _context.SaveChanges();
-
-            return NoContent();
-        }
-
-        // DELETE: api/AlbumApi/5
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult GetAlbum(int id)
         {
             var album = _context.Albumes.Find(id);
             if (album == null)
                 return NotFound();
+            return Ok(album);
+        }
 
+        // POST: api/Albumes
+        [HttpPost]
+        public async Task<IActionResult> CrearAlbum([FromBody] CreateAlbumDTOs dto)
+        {
+            var email = User.Identity?.Name;
+            var artista = _context.Usuarios.FirstOrDefault(u => u.Email == email);
+            if (artista == null)
+                return Unauthorized("Usuario no encontrado o no autorizado.");
+
+            var album = new Album
+            {
+                Titulo = dto.Titulo,
+                Descripcion = dto.Descripcion,
+                FechaLanzamiento = DateTime.Now,
+                ArtistaId = artista.Id
+            };
+            
+            _context.Albumes.Add(album);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetAlbum), new { id = album.Id }, album);
+        }
+
+        // PUT: api/Albumes/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> ActualizarAlbum(int id, [FromBody] CreateAlbumDTOs dto)
+        {
+            var album = await _context.Albumes.FindAsync(id);
+            if (album == null)
+                return NotFound();
+            album.Titulo = dto.Titulo;
+            album.Descripcion = dto.Descripcion;
+            album.FechaLanzamiento = dto.FechaLanzamiento;
+            
+            _context.Albumes.Update(album);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
+        // DELETE: api/Albumes/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> EliminarAlbum(int id)
+        {
+            var album = await _context.Albumes.FindAsync(id);
+            if (album == null)
+                return NotFound();
             _context.Albumes.Remove(album);
-            _context.SaveChanges();
-
+            await _context.SaveChangesAsync();
             return NoContent();
         }
     }

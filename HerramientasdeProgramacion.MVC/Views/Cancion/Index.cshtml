@@ -1,0 +1,100 @@
+﻿@model IEnumerable<HerramientasdeProgramacion.Modelos.Cancion>
+
+@{
+    ViewData["Title"] = "Todas las Canciones";
+}
+
+<h2 class="mb-4 text-success text-center">🎼 Todas las Canciones</h2>
+
+@if (!Model.Any())
+{
+    <p class="text-muted text-center">No hay canciones disponibles aún.</p>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+        @foreach (var c in Model)
+        {
+            var portada = !string.IsNullOrEmpty(c.Artista?.PortadaUrl)
+            ? c.Artista.PortadaUrl
+            : "/img/sin-portada.jpg";
+
+            <div class="col">
+                <div class="card h-100 bg-dark text-white border-0 shadow-lg rounded-4">
+                    <img src="@portada" alt="Portada del artista"
+                         class="card-img-top rounded-top-4"
+                         style="height: 200px; object-fit: cover;" />
+
+                    <div class="card-body text-center d-flex flex-column">
+                        <h5 class="card-title text-info">@c.Titulo</h5>
+                        <p class="card-text mb-3">
+                            <strong>🎧 Género:</strong> @c.Genero <br />
+                            <strong>👤 Artista:</strong> @c.Artista?.Nombre
+                        </p>
+
+                        <div class="mt-auto d-flex justify-content-center gap-2">
+                            <button type="button"
+                                    class="btn btn-outline-light rounded-circle"
+                                    onclick="reproducirCancion('@c.Url', '@c.Titulo', '@c.Artista?.Nombre', '@(c.Artista?.PortadaUrl ?? "/img/sin-portada.jpg")')"
+                                    title="Reproducir">
+                                ▶️
+                            </button>
+
+                            <a href="@c.Url" download class="btn btn-sm btn-success rounded-pill px-3">
+                                ⬇️ Descargar
+                            </a>
+
+                            <button type="button"
+                                    class="btn btn-sm btn-primary rounded-pill px-3"
+                                    onclick="copiarUrl('@c.Url')">
+                                🔗 Compartir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@section Scripts {
+    <script>
+        function reproducirCancion(url, titulo, artista, portada) {
+            const playerBar = document.getElementById("player-bar");
+            const audio = document.getElementById("player-audio");
+
+            playerBar.style.display = "flex";
+
+            document.getElementById("player-title").innerText = titulo;
+            document.getElementById("player-artist").innerText = artista;
+            document.getElementById("player-img").src = portada || "/img/sin-portada.jpg";
+
+            if (!url.startsWith("/")) url = "/" + url;
+            audio.src = url;
+            audio.load();
+            audio.play().catch(err => alert("No se pudo reproducir la canción"));
+
+            // Mostrar controles del audio
+            audio.style.display = "block";
+        }
+
+        // Botón Play/Pause en la barra
+        document.getElementById("btn-play-pause").addEventListener("click", function () {
+            const audio = document.getElementById("player-audio");
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        });
+
+        function copiarUrl(url) {
+            if (!url.startsWith("/")) {
+                url = "/" + url;
+            }
+            navigator.clipboard.writeText(window.location.origin + url)
+                .then(() => alert("URL copiada al portapapeles"))
+                .catch(() => alert("No se pudo copiar el enlace"));
+        }
+    </script>
+}

@@ -20,6 +20,7 @@ namespace HerramientasdeProgramacion.API.Migrations.SqlServerHdPMigrations
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PortadaUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Biografia = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Pais = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -54,6 +55,8 @@ namespace HerramientasdeProgramacion.API.Migrations.SqlServerHdPMigrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Titulo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FechaLanzamiento = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PortadaUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ArtistaId = table.Column<int>(type: "int", nullable: false),
                     UsuarioId = table.Column<int>(type: "int", nullable: true)
                 },

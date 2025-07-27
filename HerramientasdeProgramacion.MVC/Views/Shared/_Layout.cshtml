@@ -3,16 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - HerramientasdeProgramacion.MVC</title>
+    <title>@ViewData["Title"] - SpotifyClone</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/HerramientasdeProgramacion.MVC.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SpotifyClone.styles.css" asp-append-version="true" />
+    <link rel="icon" type="image/png" href="~/SoftMusic.png" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HerramientasdeProgramacion.MVC</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SpotifyClone</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,11 +26,27 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <li>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="PlayList" asp-action="Index">PlayLists</a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cancion" asp-action="Index">Canciones</a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Album" asp-action="Index">Álbumes</a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="MiPerfil">Mi Perfil</a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-light" asp-controller="Artista" asp-action="Index">Artistas</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -38,12 +55,43 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2025 - HerramientasdeProgramacion.MVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2025 - SpotifyClone - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- 🎵 Barra de reproducción inferior -->
+    <div id="player-bar" class="bg-dark text-white d-flex align-items-center px-3 shadow-lg"
+         style="position: fixed; bottom: 0; left: 0; right: 0; height: 80px; z-index: 999; display: none;">
+        <img id="player-img" src="/img/sin-portada.jpg" alt="Portada"
+             style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px; margin-right: 15px;">
+
+        <div class="me-4 overflow-hidden" style="max-width: 200px;">
+            <div id="player-title" class="fw-bold text-truncate">Título</div>
+            <div id="player-artist" class="small text-muted text-truncate">Artista</div>
+        </div>
+
+        <div class="d-flex align-items-center flex-grow-1 justify-content-center">
+            <button id="btn-prev" class="btn btn-outline-light btn-sm me-2">⏮️</button>
+            <button id="btn-play-pause" class="btn btn-outline-light btn-sm me-2">⏸️</button>
+            <button id="btn-next" class="btn btn-outline-light btn-sm">⏭️</button>
+        </div>
+
+        <audio id="player-audio" controls style="width: 200px; height: 24px; display: none;"></audio>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js" defer></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="~/js/site.js" asp-append-version="true" defer></script>
+
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        function copiarUrl(url) {
+            const fullUrl = window.location.origin + url;
+            navigator.clipboard.writeText(fullUrl)
+                .then(() => alert("¡URL copiada al portapapeles!"))
+                .catch(err => alert("Error al copiar la URL"));
+        }
+    </script>
 </body>
 </html>

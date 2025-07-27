@@ -1,0 +1,42 @@
+﻿@model HerramientasdeProgramacion.Modelos.ViewModels.RegistroViewModel
+
+@{
+    ViewData["Title"] = "Registro";
+}
+<div class="text-center mb-4">
+    <h2 class="text-primary fw-bold">Crear una cuenta</h2>
+</div>
+
+
+<form asp-action="Registrar" method="post" class="mx-auto" style="max-width: 350px;">
+    <div class="mb-3 input-corto">
+        <label asp-for="Nombre" class="form-label"></label>
+        <input asp-for="Nombre" class="form-control" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3 input-corto">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3 input-corto">
+        <label asp-for="Password" class="form-label"></label>
+        <input asp-for="Password" class="form-control" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3 input-corto">
+        <label class="form-label">Tipo de Plan</label><br />
+        <input type="radio" asp-for="Plan" value="Gratis" checked /> Gratis
+        <input type="radio" asp-for="Plan" value="Premium" class="ms-3" /> Premium
+        <span asp-validation-for="Plan" class="text-danger d-block"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">Registrarse</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

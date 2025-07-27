@@ -18,6 +18,8 @@ namespace HerramientasdeProgramacion.Modelos
 
         public string Biografia { get; set; }
 
+        public DateTime FechaNacimiento { get; set; }
+
         public string Pais { get; set; }
 
         // Relación: un artista puede subir muchas canciones

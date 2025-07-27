@@ -64,7 +64,7 @@ namespace HerramientasdeProgramacion.API.Controllers
             return Ok("Usuario creado");
         }
 
-        // POST: api/UsuarioApi/login
+        /* POST: api/UsuarioApi/login
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginDTO login)
         {
@@ -96,7 +96,7 @@ namespace HerramientasdeProgramacion.API.Controllers
             {
                 token = new JwtSecurityTokenHandler().WriteToken(token)
             });
-        }
+        }*/
 
         // POST: api/UsuarioApi/login
         [Authorize]

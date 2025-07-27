@@ -9,7 +9,7 @@
   <ItemGroup>
     <PackageReference Include="EPPlus" Version="8.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.18" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.11">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -22,6 +22,11 @@
     <ProjectReference Include="..\HerramientasdeProgramacion.Consumer\HerramientasdeProgramacion.Consumer.csproj" />
     <ProjectReference Include="..\HerramientasdeProgramacion.Modelos\HerramientasdeProgramacion.Modelos.csproj" />
     <ProjectReference Include="..\HerramientasdeProgramacion\HerramientasdeProgramacion.API.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\audios\" />
+    <Folder Include="wwwroot\portadas\" />
   </ItemGroup>
 
 </Project>

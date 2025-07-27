@@ -2,6 +2,7 @@
 using HerramientasdeProgramacion.Modelos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HerramientasdeProgramacion.API.Controllers
 {
@@ -15,11 +16,30 @@ namespace HerramientasdeProgramacion.API.Controllers
         public PlayListsController(SqlServerHdPDbContext context)
         {
             _context = context;
+
         }
 
-        // 
+        // GET: api/PlayLists
+        [HttpGet]
+        public IActionResult GetPlayLists()
+        {
+            var playLists = _context.PlayLists.ToList();
+            return Ok(playLists);
+        }
+
+        // GET: api/PlayLists/5
+        [HttpGet("{id}")]
+        public IActionResult GetPlayList(int id)
+        {
+            var playList = _context.PlayLists.Find(id);
+            if (playList == null)
+                return NotFound();
+            return Ok(playList);
+        }
+
+        // POST: api/PlayLists
         [HttpPost]
-        public IActionResult CrearPlaylist([FromBody] string nombre)
+        public async Task<IActionResult> CrearPlayList([FromBody] string nombre)
         {
             var email = User.Identity?.Name;
             var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == email);
@@ -44,68 +64,71 @@ namespace HerramientasdeProgramacion.API.Controllers
             return Ok("Playlist creada.");
         }
 
-        // 
-        [HttpGet]
-        public IActionResult ObtenerPlaylists()
+        // POST: api/PlayLists/5/agregar
+        [HttpPost("{id}/agregar")]
+        public async Task<IActionResult> AgregarCancionAPlayList(int id, [FromBody] int cancionId)
         {
-            var email = User.Identity?.Name;
-            var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == email);
-
-            if (usuario == null)
-                return Unauthorized();
-
-            var playlists = _context.PlayLists
-                .Where(p => p.UsuarioId == usuario.Id)
-                .Select(p => new
-                {
-                    p.Id,
-                    p.Nombre,
-                    Canciones = p.Canciones.Select(pc => pc.Cancion.Titulo)
-                })
-                .ToList();
-
-            return Ok(playlists);
-        }
-
-        //
-        [HttpPost("{playlistId}/agregar")]
-        public IActionResult AgregarCancion(int playlistId, [FromBody] int cancionId)
-        {
-            var email = User.Identity?.Name;
-            var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == email);
-
-            var playlist = _context.PlayLists.FirstOrDefault(p => p.Id == playlistId && p.UsuarioId == usuario.Id);
-            if (playlist == null)
-                return NotFound("Playlist no encontrada.");
-
-            var yaExiste = _context.PlayListsCanciones.Any(pc => pc.PlaylistId == playlistId && pc.CancionId == cancionId);
-            if (yaExiste)
-                return Conflict("La canción ya está en la playlist.");
-
-            _context.PlayListsCanciones.Add(new PlayListCancion
-            {
-                PlaylistId = playlistId,
-                CancionId = cancionId
-            });
-
-            _context.SaveChanges();
-            return Ok("Canción agregada.");
-        }
-
-        // 
-        [HttpPost("{playlistId}/quitar")]
-        public IActionResult QuitarCancion(int playlistId, [FromBody] int cancionId)
-        {
-            var cancion = _context.PlayListsCanciones.FirstOrDefault(pc =>
-                pc.PlaylistId == playlistId && pc.CancionId == cancionId);
-
+            var playList = await _context.PlayLists.FindAsync(id);
+            if (playList == null)
+                return NotFound();
+            var cancion = await _context.Canciones.FindAsync(cancionId);
             if (cancion == null)
+                return NotFound("Canción no encontrada.");
+            if (_context.PlayListsCanciones.Any(pc => pc.PlaylistId == id && pc.CancionId == cancionId))
+                return Conflict("La canción ya está en la playlist.");
+            var playListCancion = new PlayListCancion
+            {
+                PlaylistId = id,
+                CancionId = cancionId
+            };
+            _context.PlayListsCanciones.Add(playListCancion);
+            await _context.SaveChangesAsync();
+            return Ok("Canción agregada a la playlist.");
+        }
+
+        // PUT: api/PlayLists/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> ActualizarPlayList(int id, string nombre)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var playList = await _context.PlayLists.FindAsync(id);
+            if (playList == null)
+                return NotFound();
+            playList.Nombre = nombre;
+
+
+            _context.PlayLists.Update(playList);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
+        // DELETE: api/PlayLists/5/canciones/10
+        [HttpDelete("{id}/canciones/{cancionId}")]
+        public async Task<IActionResult> EliminarCancionDePlayList(int id, int cancionId)
+        {
+            var playList = await _context.PlayLists.FindAsync(id);
+            if (playList == null)
+                return NotFound();
+            var playListCancion = await _context.PlayListsCanciones
+                .FirstOrDefaultAsync(pc => pc.PlaylistId == id && pc.CancionId == cancionId);
+            if (playListCancion == null)
                 return NotFound("La canción no está en la playlist.");
+            _context.PlayListsCanciones.Remove(playListCancion);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
 
-            _context.PlayListsCanciones.Remove(cancion);
-            _context.SaveChanges();
-
-            return Ok("Canción quitada.");
+        // DELETE: api/PlayLists/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> EliminarPlayList(int id)
+        {
+            var playList = await _context.PlayLists.FindAsync(id);
+            if (playList == null)
+                return NotFound();
+            _context.PlayLists.Remove(playList);
+            await _context.SaveChangesAsync();
+            return NoContent();
         }
     }
 }

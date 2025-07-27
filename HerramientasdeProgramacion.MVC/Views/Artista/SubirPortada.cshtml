@@ -1,0 +1,16 @@
+﻿@model HerramientasdeProgramacion.Modelos.Artista
+
+@{
+    ViewData["Title"] = "Subir portada de artista";
+}
+
+<h2>Subir Portada para @Model.Nombre</h2>
+
+<form asp-controller="Artista" asp-action="SubirPortada" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <div class="form-group">
+        <label>Seleccionar imagen (.jpg, .png)</label>
+        <input type="file" name="PortadaFile" class="form-control" accept=".jpg,.jpeg,.png" required />
+    </div>
+    <button class="btn btn-success mt-2">Subir</button>
+</form>

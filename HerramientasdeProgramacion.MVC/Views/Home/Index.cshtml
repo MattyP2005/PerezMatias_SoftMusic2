@@ -1,8 +1,189 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model HerramientasdeProgramacion.Modelos.ViewModels.HomeViewModel
+
+@{
+    ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container text-white">
+
+    <!-- 🎧 Álbumes -->
+    <h2 class="mb-4 text-info display-6"><i class="bi bi-disc-fill"></i> Álbumes Disponibles</h2>
+
+    <div class="row row-cols-2 row-cols-md-5 g-4">
+        @foreach (var album in Model.Albums)
+        {
+            <div class="col">
+                <div class="card bg-dark text-white border-0 shadow-sm h-100">
+                    <a href="@Url.Action("Ver", "Album", new { id = album.Id })" class="text-decoration-none text-white">
+                        <div class="ratio ratio-1x1">
+                            <span style="font-size: 3.5rem;">💿</span>
+                        </div>
+                        <div class="card-body p-2">
+                            <h6 class="card-title text-truncate">@album.Titulo</h6>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+
+    <hr class="my-5 border-secondary" />
+
+    <!-- ⭐ Playlists -->
+    <h2 class="mb-4 text-success display-6"><i class="bi bi-music-note-list"></i> Playlists Públicas</h2>
+    <p class="text-muted">Total de playlists públicas: @Model.PlaylistsPublicas.Count()</p>
+
+    <div class="row row-cols-2 row-cols-md-5 g-4">
+        @foreach (var playlist in Model.PlaylistsPublicas)
+        {
+            var portada = playlist.Canciones.FirstOrDefault()?.Cancion?.Artista?.PortadaUrl ?? "/img/sin-portada.jpg";
+
+            <div class="col">
+                <div class="card bg-dark text-white border-0 shadow-sm h-100">
+                    <a href="@Url.Action("Ver", "Playlist", new { id = playlist.Id })" class="text-decoration-none text-white">
+                        <div class="ratio ratio-1x1">
+                            <img src="@portada" class="card-img-top object-fit-cover" alt="Portada playlist" />
+                        </div>
+                        <div class="card-body p-2">
+                            <h6 class="card-title text-truncate">@playlist.Nombre</h6>
+                            <small class="text-warning">🎵 @playlist.Canciones.Count canciones</small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+
+    <hr class="my-5 border-secondary" />
+
+    <!-- 🎶 Canciones Sueltas -->
+    <h2 class="mb-4 text-danger display-6"><i class="bi bi-music-note-beamed"></i> Canciones Sueltas</h2>
+
+    @if (!Model.CancionesSueltas.Any())
+    {
+        <p class="text-muted">No hay canciones sueltas aún.</p>
+    }
+    else
+    {
+        <div class="row row-cols-2 row-cols-md-5 g-4">
+            @foreach (var c in Model.CancionesSueltas)
+            {
+                var portada = c.Artista?.PortadaUrl ?? "/img/sin-portada.jpg";
+
+                <div class="col">
+                    <div class="card bg-dark text-white border-0 shadow-sm h-100">
+                        <div class="ratio ratio-1x1">
+                            <img src="@portada" class="card-img-top object-fit-cover" alt="Portada canción" />
+                        </div>
+                        <div class="card-body p-2 d-flex flex-column">
+                            <h6 class="card-title text-info mb-1 text-truncate">@c.Titulo</h6>
+                            <small class="text-light mb-2 text-truncate">@c.Artista?.Nombre</small>
+
+                            <button class="btn btn-sm btn-outline-info w-100 mb-2"
+                                    onclick="reproducirCancion({
+                                            url: '@c.Url',
+                                            titulo: '@c.Titulo',
+                                            artista: '@c.Artista?.Nombre',
+                                            portada: '@(c.Artista?.PortadaUrl ?? "/img/sin-portada.jpg")'
+
+                                        })">
+                                ▶️ Reproducir
+                            </button>
+
+
+                            <div class="d-flex justify-content-between mt-auto">
+                                <a href="@c.Url" download class="btn btn-sm btn-success rounded-pill px-3">
+                                    ⬇️ Descargar
+                                </a>
+                                <button class="btn btn-sm btn-outline-light" onclick="copiarUrl('@c.Url')">🔗</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
 </div>
+
+@section Scripts {
+    <script>
+        function copiarUrl(url) {
+            navigator.clipboard.writeText(window.location.origin + url)
+                .then(() => alert("🎧 URL copiada al portapapeles"))
+                .catch(() => alert("No se pudo copiar el enlace"));
+        }
+    </script>
+
+    <script>
+        let colaReproduccion = [];
+        let cancionActualIndex = -1;
+        const audio = document.getElementById("player-audio");
+        const playerBar = document.getElementById("player-bar");
+        const title = document.getElementById("player-title");
+        const artist = document.getElementById("player-artist");
+        const img = document.getElementById("player-img");
+        const btnPlayPause = document.getElementById("btn-play-pause");
+
+        function reproducirCancion(cancion) {
+            // Si es nueva canción, agrégala a la cola
+            const index = colaReproduccion.findIndex(c => c.url === cancion.url);
+            if (index === -1) {
+                colaReproduccion.push(cancion);
+                cancionActualIndex = colaReproduccion.length - 1;
+            } else {
+                cancionActualIndex = index;
+            }
+
+            actualizarBarra();
+        }
+
+        function actualizarBarra() {
+            const cancion = colaReproduccion[cancionActualIndex];
+            if (!cancion) return;
+
+            title.textContent = cancion.titulo;
+            artist.textContent = cancion.artista || "Artista desconocido";
+            img.src = cancion.portada || "/img/sin-portada.jpg";
+
+            audio.src = cancion.url;
+            audio.play();
+
+            btnPlayPause.textContent = "⏸️";
+            playerBar.style.display = "flex";
+        }
+
+        btnPlayPause.addEventListener("click", () => {
+            if (audio.paused) {
+                audio.play();
+                btnPlayPause.textContent = "⏸️";
+            } else {
+                audio.pause();
+                btnPlayPause.textContent = "▶️";
+            }
+        });
+
+        document.getElementById("btn-next").addEventListener("click", () => {
+            if (cancionActualIndex < colaReproduccion.length - 1) {
+                cancionActualIndex++;
+                actualizarBarra();
+            }
+        });
+
+        document.getElementById("btn-prev").addEventListener("click", () => {
+            if (cancionActualIndex > 0) {
+                cancionActualIndex--;
+                actualizarBarra();
+            }
+        });
+
+        audio.addEventListener("ended", () => {
+            // Reproduce siguiente automáticamente
+            if (cancionActualIndex < colaReproduccion.length - 1) {
+                cancionActualIndex++;
+                actualizarBarra();
+            } else {
+                btnPlayPause.textContent = "▶️";
+            }
+        });
+    </script>
+}

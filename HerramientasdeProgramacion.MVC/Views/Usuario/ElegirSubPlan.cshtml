@@ -1,0 +1,53 @@
+﻿@model HerramientasdeProgramacion.Modelos.ViewModels.ElegirSubPlanViewModel
+
+@{
+    ViewData["Title"] = "Elige tu sub-plan Premium";
+}
+
+<div class="container py-5">
+    <h2 class="text-center mb-4 text-primary">Elige tu tipo de cuenta Premium</h2>
+
+    <form asp-action="ElegirSubPlan" method="post" class="text-center">
+        <input type="hidden" asp-for="UsuarioId" />
+
+        <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
+            <div class="col">
+                <div class="card shadow-sm h-100 border-success">
+                    <div class="card-body">
+                        <h5 class="card-title">👤 Personal</h5>
+                        <p>1 cuenta individual</p>
+                        <p><strong>$1.00 / mes</strong></p>
+                        <input type="radio" asp-for="SubPlan" value="Personal" class="form-check-input" />
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow-sm h-100 border-info">
+                    <div class="card-body">
+                        <h5 class="card-title">👨‍👩‍👧 Familiar</h5>
+                        <p>Hasta 4 cuentas</p>
+                        <p><strong>$3.50 / mes</strong></p>
+                        <input type="radio" asp-for="SubPlan" value="Familiar" class="form-check-input" />
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow-sm h-100 border-warning">
+                    <div class="card-body">
+                        <h5 class="card-title">🏢 Empresarial</h5>
+                        <p>Hasta 50 cuentas</p>
+                        <p><strong>$35.00 / mes</strong></p>
+                        <input type="radio" asp-for="SubPlan" value="Empresarial" class="form-check-input" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success btn-lg px-4 mt-3">Continuar al pago</button>
+    </form>
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger mt-3">@Html.ValidationMessageFor(m => m.SubPlan)</div>
+    }
+</div>

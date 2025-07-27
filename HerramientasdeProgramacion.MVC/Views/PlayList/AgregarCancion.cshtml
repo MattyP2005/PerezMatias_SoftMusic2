@@ -1,0 +1,19 @@
+﻿@model HerramientasdeProgramacion.Modelos.PlayList
+
+@{
+    var canciones = (List<HerramientasdeProgramacion.Modelos.Cancion>)ViewBag.CancionesDisponibles;
+}
+
+<h2>Agregar Canciones a: @Model.Nombre</h2>
+
+<form asp-action="AgregarCanciones" method="post">
+    <input type="hidden" name="playlistId" value="@Model.Id" />
+    @foreach (var c in canciones)
+    {
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="cancionesSeleccionadas" value="@c.Id" />
+            <label class="form-check-label">@c.Titulo</label>
+        </div>
+    }
+    <button type="submit" class="btn btn-primary mt-2">Agregar</button>
+</form>

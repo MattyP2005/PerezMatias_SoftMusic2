@@ -12,6 +12,10 @@ namespace HerramientasdeProgramacion.Modelos
 
         public DateTime FechaLanzamiento { get; set; }
 
+        public string Descripcion { get; set; } // Descripción opcional del álbum
+
+        public string PortadaUrl { get; set; } // URL o ruta relativa a la portada del álbum
+
         // Relación con Artista
         public int ArtistaId { get; set; }
 

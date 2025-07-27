@@ -1,0 +1,39 @@
+﻿@model IEnumerable<HerramientasdeProgramacion.Modelos.Artista>
+
+@{
+    ViewData["Title"] = "Artistas";
+}
+
+<h2 class="mb-4 text-primary text-center">🎤 Todos los Artistas</h2>
+
+@if (!Model.Any())
+{
+    <p class="text-muted text-center">No hay artistas agregados aún.</p>
+}
+else
+{
+    <div class="row justify-content-center">
+        @foreach (var artista in Model)
+        {
+            <div class="col-md-4 mb-4 d-flex justify-content-center">
+                <div class="card shadow-sm text-center" style="width: 100%; max-width: 300px;">
+                    <div style="overflow:hidden; height: 200px;">
+                        @if (!string.IsNullOrEmpty(artista.PortadaUrl))
+                        {
+                            <img src="@artista.PortadaUrl" alt="Portada de @artista.Nombre" class="card-img-top mx-auto" style="width:100%; height:100%; object-fit:contain;" />
+                        }
+                        else
+                        {
+                            <img src="~/images/default-artist.png" alt="Portada predeterminada" class="card-img-top mx-auto" style="width:100%; height:100%; object-fit:contain;" />
+                        }
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@artista.Nombre</h5>
+                        <p class="card-text" style="white-space: pre-wrap;">@artista.Biografia</p>
+                        <p class="card-text"><small class="text-muted">@artista.Pais</small></p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

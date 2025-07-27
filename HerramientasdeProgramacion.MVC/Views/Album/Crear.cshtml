@@ -1,0 +1,19 @@
+﻿@model HerramientasdeProgramacion.Modelos.Album
+
+@{
+    ViewData["Title"] = "Crear Álbum";
+}
+
+<h2>Crear Álbum</h2>
+
+<form asp-action="Crear" method="post">
+    <div class="form-group">
+        <label>Título</label>
+        <input type="text" name="titulo" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Fecha de lanzamiento</label>
+        <input type="date" name="fechaLanzamiento" class="form-control" required />
+    </div>
+    <button class="btn btn-success mt-2">Crear</button>
+</form>

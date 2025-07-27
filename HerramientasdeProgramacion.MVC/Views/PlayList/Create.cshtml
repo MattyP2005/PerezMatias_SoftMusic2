@@ -1,0 +1,15 @@
+﻿@model HerramientasdeProgramacion.Modelos.PlayList
+
+@{
+    ViewData["Title"] = "Crear Playlist";
+}
+
+<h2>Crear Playlist</h2>
+
+<form asp-action="Crear" method="post">
+    <div class="form-group">
+        <label>Nombre</label>
+        <input name="nombre" class="form-control" required />
+    </div>
+    <button class="btn btn-success mt-2" type="submit">Crear</button>
+</form>

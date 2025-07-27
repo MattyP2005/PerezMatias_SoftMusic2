@@ -1,0 +1,65 @@
+﻿@model HerramientasdeProgramacion.Modelos.ViewModels.MetodoPagoViewModel
+
+@{
+    ViewData["Title"] = "Método de Pago";
+}
+
+<div class="container mt-5" style="max-width: 500px;">
+    <h2 class="text-center text-success mb-4">💳 Método de Pago Seguro</h2>
+
+    @if (TempData["SubPlanInfo"] != null)
+    {
+        <div class="alert alert-info text-center fw-bold mb-4">
+            Plan seleccionado: @TempData["SubPlanInfo"]
+        </div>
+    }
+
+    <form asp-action="MetodoPago" method="post" class="shadow p-4 rounded bg-light">
+        <input type="hidden" asp-for="UsuarioId" />
+
+        <div class="mb-3">
+            <label asp-for="TipoTarjeta" class="form-label">Tipo de tarjeta</label>
+            <select asp-for="TipoTarjeta" class="form-select">
+                <option value="">Seleccione</option>
+                <option>Visa</option>
+                <option>MasterCard</option>
+                <option>American Express</option>
+            </select>
+            <span asp-validation-for="TipoTarjeta" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="NumeroTarjeta" class="form-label">Número de tarjeta</label>
+            <input asp-for="NumeroTarjeta" class="form-control" placeholder="**** **** **** 1234" maxlength="19" />
+            <span asp-validation-for="NumeroTarjeta" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="NombreTitular" class="form-label">Nombre del titular</label>
+            <input asp-for="NombreTitular" class="form-control" placeholder="Nombre en la tarjeta" />
+            <span asp-validation-for="NombreTitular" class="text-danger"></span>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="FechaExpiracion" class="form-label">Expira (MM/AA)</label>
+                <input asp-for="FechaExpiracion" class="form-control" placeholder="MM/AA" maxlength="5" />
+                <span asp-validation-for="FechaExpiracion" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="CVV" class="form-label">CVV</label>
+                <input asp-for="CVV" class="form-control" maxlength="4" />
+                <span asp-validation-for="CVV" class="text-danger"></span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100 py-2 fw-bold">Finalizar suscripción</button>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

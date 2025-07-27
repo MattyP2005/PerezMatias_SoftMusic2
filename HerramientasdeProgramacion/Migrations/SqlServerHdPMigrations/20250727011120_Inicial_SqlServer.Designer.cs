@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HerramientasdeProgramacion.API.Migrations.SqlServerHdPMigrations
 {
     [DbContext(typeof(SqlServerHdPDbContext))]
-    [Migration("20250725042326_Inicial_SqlServer")]
+    [Migration("20250727011120_Inicial_SqlServer")]
     partial class Inicial_SqlServer
     {
         /// <inheritdoc />
@@ -36,8 +36,16 @@ namespace HerramientasdeProgramacion.API.Migrations.SqlServerHdPMigrations
                     b.Property<int>("ArtistaId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("FechaLanzamiento")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("PortadaUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
@@ -84,6 +92,9 @@ namespace HerramientasdeProgramacion.API.Migrations.SqlServerHdPMigrations
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FechaNacimiento")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Nombre")
                         .IsRequired()

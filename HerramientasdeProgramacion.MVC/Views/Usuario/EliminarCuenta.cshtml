@@ -1,0 +1,25 @@
+﻿@model HerramientasdeProgramacion.Modelos.Usuario
+
+@{
+    ViewData["Title"] = "Eliminar Cuenta";
+}
+
+<div class="container mt-5" style="max-width: 600px;">
+    <h2 class="text-danger text-center mb-4">⚠ ¿Estás seguro que deseas eliminar tu cuenta?</h2>
+
+    <div class="alert alert-warning">
+        Esta acción es permanente. Toda tu información será eliminada.
+    </div>
+
+    <form asp-action="EliminarCuenta" method="post">
+        <div class="mb-3">
+            <label class="form-label">¿Por qué deseas eliminar tu cuenta?</label>
+            <textarea name="motivo" class="form-control" rows="4" placeholder="(Opcional) Describe tu motivo..."></textarea>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <a asp-action="MiPerfil" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-danger">Eliminar definitivamente</button>
+        </div>
+    </form>
+</div>

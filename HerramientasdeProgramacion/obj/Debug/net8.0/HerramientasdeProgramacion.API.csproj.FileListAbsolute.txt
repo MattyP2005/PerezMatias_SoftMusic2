@@ -9,6 +9,7 @@ C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueb
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\bin\Debug\net8.0\Azure.Core.dll
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\bin\Debug\net8.0\Azure.Identity.dll
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\bin\Debug\net8.0\Humanizer.dll
+C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\bin\Debug\net8.0\Microsoft.AspNetCore.Razor.Language.dll
@@ -254,6 +255,7 @@ C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueb
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\obj\Debug\net8.0\HerramientasdeProgramacion.API.csproj.CoreCompileInputs.cache
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\obj\Debug\net8.0\HerramientasdeProgramacion.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\obj\Debug\net8.0\HerramientasdeProgramacion.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\obj\Debug\net8.0\HerramientasdeProgramacion.API.sourcelink.json
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\obj\Debug\net8.0\rjimswa.dswa.cache.json
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
