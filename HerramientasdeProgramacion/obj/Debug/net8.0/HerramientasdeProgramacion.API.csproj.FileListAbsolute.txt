@@ -264,10 +264,10 @@ C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueb
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\obj\Debug\net8.0\staticwebassets.development.json
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\obj\Debug\net8.0\Herramie.3E852021.Up2Date
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\obj\Debug\net8.0\HerramientasdeProgramacion.API.dll
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\obj\Debug\net8.0\refint\HerramientasdeProgramacion.API.dll
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\obj\Debug\net8.0\HerramientasdeProgramacion.API.pdb
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\obj\Debug\net8.0\HerramientasdeProgramacion.API.genruntimeconfig.cache
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\obj\Debug\net8.0\ref\HerramientasdeProgramacion.API.dll
-C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

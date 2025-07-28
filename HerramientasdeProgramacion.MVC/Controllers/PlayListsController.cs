@@ -1,186 +1,251 @@
-﻿using HerramientasdeProgramacion.Consumer;
+﻿using HerramientasdeProgramacion.API.Data;
 using HerramientasdeProgramacion.Modelos;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace HerramientasdeProgramacion.MVC.Controllers
 {
     public class PlayListsController : Controller
     {
-        public IActionResult Index()
+        private readonly SqlServerHdPDbContext _context;
+
+        public PlayListsController(SqlServerHdPDbContext context)
         {
-            var playLists = Crud<PlayList>.GetAll();
-            return View(playLists);
+            _context = context;
+        }
+
+        // GET: PlayLists
+        public async Task<IActionResult> Index()
+        {
+            var playlists = _context.PlayLists
+                .Include(p => p.Usuario)
+                .Include(p => p.Canciones)
+                    .ThenInclude(pc => pc.Cancion)
+                        .ThenInclude(c => c.Artista)
+                .Where(p => p.Usuario.Email == User.Identity.Name)
+                .ToList();
+
+            return View(playlists);
         }
 
         // GET: PlayLists/Details/5
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int? id)
         {
-            var playList = Crud<PlayList>.GetById(id);
-            if (playList == null)
-            {
+            if (id == null)
                 return NotFound();
-            }
-            return View(playList);
+
+            var playlist = await _context.PlayLists
+                .Include(p => p.Usuario)
+                .Include(p => p.Canciones)
+                    .ThenInclude(pc => pc.Cancion)
+                        .ThenInclude(c => c.Artista)
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            if (playlist == null)
+                return NotFound();
+
+            return View(playlist);
         }
 
         // GET: PlayLists/Create
         public IActionResult Create()
         {
+            var userEmail = User.Identity?.Name;
+            var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == userEmail);
+
+            if (usuario == null)
+                return Unauthorized();
+
+            if (!usuario.Plan.StartsWith("Premium"))
+            {
+                TempData["Error"] = "Solo los usuarios con plan Premium pueden crear playlists.";
+                return RedirectToAction("Index");
+            }
+
             return View();
         }
 
         // POST: PlayLists/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PlayList playList)
+        public async Task<IActionResult> Create(string nombre)
         {
-            if (!ModelState.IsValid)
+            var userEmail = User.Identity?.Name;
+            var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == userEmail);
+            if (usuario == null) return Unauthorized();
+
+            if (!usuario.Plan.StartsWith("Premium"))
             {
-                return BadRequest(ModelState);
+                TempData["Error"] = "Solo los usuarios con plan Premium pueden crear playlists.";
+                return RedirectToAction("Index");
             }
-            try
+
+            var playlist = new PlayList
             {
-                Crud<PlayList>.Create(playList);
-                return RedirectToAction(nameof(Index));
-            }
-            catch (Exception ex)
+                Nombre = nombre,
+                UsuarioId = usuario.Id,
+                FechaCreacion = DateTime.UtcNow,
+                EsPublica = true
+            };
+
+            _context.PlayLists.Add(playlist);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        // GET: Agregar Canciones a Playlist
+        public IActionResult AgregarCanciones(int id)
+        {
+            var playlist = _context.PlayLists
+                .Include(p => p.Canciones)
+                .ThenInclude(pc => pc.Cancion)
+                .FirstOrDefault(p => p.Id == id);
+
+            if (playlist == null)
+                return NotFound();
+
+            ViewBag.CancionesDisponibles = _context.Canciones.ToList();
+            return View(playlist);
+        }
+
+        // POST: Agregar Canciones a Playlist
+        [HttpPost]
+        public IActionResult AgregarCanciones(int playlistId, int[] cancionesSeleccionadas)
+        {
+            foreach (var cancionId in cancionesSeleccionadas)
             {
-                ModelState.AddModelError("", ex.Message);
-                return View(playList);
+                var existe = _context.PlayListsCanciones.Any(pc => pc.PlaylistId == playlistId && pc.CancionId == cancionId);
+                if (!existe)
+                {
+                    _context.PlayListsCanciones.Add(new PlayListCancion
+                    {
+                        PlaylistId = playlistId,
+                        CancionId = cancionId
+                    });
+                }
             }
+
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: PlayLists/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int? id)
         {
-            var playList = Crud<PlayList>.GetById(id);
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var playList = await _context.PlayLists.FindAsync(id);
             if (playList == null)
             {
                 return NotFound();
             }
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Email", playList.UsuarioId);
             return View(playList);
         }
 
         // POST: PlayLists/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, PlayList playList)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,FechaCreacion,UsuarioId,EsPublica")] PlayList playList)
         {
-            if (!ModelState.IsValid)
+            if (id != playList.Id)
             {
-                return BadRequest(ModelState);
+                return NotFound();
             }
-            try
+
+            if (ModelState.IsValid)
             {
-                Crud<PlayList>.Update(id, playList);
+                try
+                {
+                    _context.Update(playList);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!PlayListExists(playList.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
                 return RedirectToAction(nameof(Index));
             }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("", ex.Message);
-                return View(playList);
-            }
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Email", playList.UsuarioId);
+            return View(playList);
         }
 
         // GET: PlayLists/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int? id)
         {
-            var playList = Crud<PlayList>.GetById(id);
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var playList = await _context.PlayLists
+                .Include(p => p.Usuario)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (playList == null)
             {
                 return NotFound();
             }
+
             return View(playList);
         }
 
         // POST: PlayLists/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            try
-            {
-                Crud<PlayList>.Delete(id);
-                return RedirectToAction(nameof(Index));
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("", ex.Message);
-                return View();
-            }
-        }
+            var playlist = _context.PlayLists
+                .Include(p => p.Canciones)
+                .FirstOrDefault(p => p.Id == id);
 
-        // GET: Agregar Canción a Playlist
-        public IActionResult AgregarCancion(int playlistId)
-        {
-            var playlist = Crud<PlayList>.GetById(playlistId);
             if (playlist == null)
-            {
                 return NotFound();
-            }
-            var canciones = Crud<Cancion>.GetAll();
-            ViewBag.PlaylistId = playlistId;
-            return View(canciones);
+
+            // Eliminar relaciones con canciones
+            _context.PlayListsCanciones.RemoveRange(playlist.Canciones);
+
+            // Eliminar playlist
+            _context.PlayLists.Remove(playlist);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         // POST: Quitar Canción de Playlist
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult AgregarCancion(int playlistId, int cancionId)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            try
-            {
-                var playListCancion = new PlayListCancion
-                {
-                    PlaylistId = playlistId,
-                    CancionId = cancionId
-                };
-                Crud<PlayListCancion>.Create(playListCancion);
-                return RedirectToAction(nameof(Index));
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("", ex.Message);
-                return View();
-            }
-        }
-
-        // GET: Quitar Canción de Playlist
         public IActionResult QuitarCancion(int playlistId, int cancionId)
         {
-            var playListCancion = Crud<PlayListCancion>.GetAll()
-                .FirstOrDefault(plc => plc.PlaylistId == playlistId && plc.CancionId == cancionId);
-            if (playListCancion == null)
-            {
+            var relacion = _context.PlayListsCanciones
+                .FirstOrDefault(pc => pc.PlaylistId == playlistId && pc.CancionId == cancionId);
+
+            if (relacion == null)
                 return NotFound();
-            }
-            return View(playListCancion);
+
+            _context.PlayListsCanciones.Remove(relacion);
+            _context.SaveChanges();
+
+            return RedirectToAction("Ver", new { id = playlistId });
         }
 
-        // POST: Quitar Canción de Playlist
-        [HttpPost, ActionName("QuitarCancion")]
-        [ValidateAntiForgeryToken]
-        public IActionResult QuitarCancionConfirmed(int playlistId, int cancionId)
+        private bool PlayListExists(int id)
         {
-            try
-            {
-                var playListCancion = Crud<PlayListCancion>.GetAll()
-                    .FirstOrDefault(plc => plc.PlaylistId == playlistId && plc.CancionId == cancionId);
-                if (playListCancion != null)
-                {
-                    Crud<PlayListCancion>.Delete(playListCancion.PlaylistId);
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("", ex.Message);
-                return View();
-            }
+            return _context.PlayLists.Any(e => e.Id == id);
         }
     }
 }

@@ -1,0 +1,464 @@
+[
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.AlbumesController",
+    "Method": "GetAlbumes",
+    "RelativePath": "api/Albumes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.AlbumesController",
+    "Method": "CrearAlbum",
+    "RelativePath": "api/Albumes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "HerramientasdeProgramacion.API.Controllers.DTOs.CreateAlbumDTOs",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.AlbumesController",
+    "Method": "GetAlbum",
+    "RelativePath": "api/Albumes/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.AlbumesController",
+    "Method": "ActualizarAlbum",
+    "RelativePath": "api/Albumes/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "HerramientasdeProgramacion.API.Controllers.DTOs.CreateAlbumDTOs",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.AlbumesController",
+    "Method": "EliminarAlbum",
+    "RelativePath": "api/Albumes/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.ArtistasController",
+    "Method": "GetArtistas",
+    "RelativePath": "api/Artistas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.ArtistasController",
+    "Method": "GetArtista",
+    "RelativePath": "api/Artistas/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.ArtistasController",
+    "Method": "ActualizarArtista",
+    "RelativePath": "api/Artistas/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "HerramientasdeProgramacion.API.Controllers.DTOs.CreateArtistaDTOs",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.ArtistasController",
+    "Method": "EliminarArtista",
+    "RelativePath": "api/Artistas/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.ArtistasController",
+    "Method": "CrearArtista",
+    "RelativePath": "api/Artistas/crear",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "HerramientasdeProgramacion.API.Controllers.DTOs.CreateArtistaDTOs",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.CancionesController",
+    "Method": "GetCanciones",
+    "RelativePath": "api/Canciones",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.CancionesController",
+    "Method": "GetCancion",
+    "RelativePath": "api/Canciones/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.CancionesController",
+    "Method": "ActualizarCancion",
+    "RelativePath": "api/Canciones/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "HerramientasdeProgramacion.API.Controllers.DTOs.CreateCancionDTOs",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.CancionesController",
+    "Method": "EliminarCancion",
+    "RelativePath": "api/Canciones/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.CancionesController",
+    "Method": "CrearCancion",
+    "RelativePath": "api/Canciones/CrearCancion",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "HerramientasdeProgramacion.API.Controllers.DTOs.CreateCancionDTOs",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.CancionesController",
+    "Method": "DescargarCancion",
+    "RelativePath": "api/Canciones/descargar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.PlayListsController",
+    "Method": "GetPlayLists",
+    "RelativePath": "api/PlayLists",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.PlayListsController",
+    "Method": "CrearPlayList",
+    "RelativePath": "api/PlayLists",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nombre",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.PlayListsController",
+    "Method": "GetPlayList",
+    "RelativePath": "api/PlayLists/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.PlayListsController",
+    "Method": "ActualizarPlayList",
+    "RelativePath": "api/PlayLists/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "nombre",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.PlayListsController",
+    "Method": "EliminarPlayList",
+    "RelativePath": "api/PlayLists/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.PlayListsController",
+    "Method": "AgregarCancionAPlayList",
+    "RelativePath": "api/PlayLists/{id}/agregar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "cancionId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.PlayListsController",
+    "Method": "EliminarCancionDePlayList",
+    "RelativePath": "api/PlayLists/{id}/canciones/{cancionId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "cancionId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.UsuariosController",
+    "Method": "ObtenerUsuarios",
+    "RelativePath": "api/Usuarios",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.UsuariosController",
+    "Method": "CrearUsuario",
+    "RelativePath": "api/Usuarios",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "HerramientasdeProgramacion.API.Controllers.DTOs.CreateUsuarioDTOs",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.UsuariosController",
+    "Method": "EliminarUsuario",
+    "RelativePath": "api/Usuarios/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.UsuariosController",
+    "Method": "VerPlan",
+    "RelativePath": "api/Usuarios/plan",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.UsuariosController",
+    "Method": "VerSoloAutenticados",
+    "RelativePath": "api/Usuarios/protegido",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.HistorialesController",
+    "Method": "VerHistorial",
+    "RelativePath": "Historiales",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.HistorialesController",
+    "Method": "RegistrarReproduccion",
+    "RelativePath": "Historiales/{cancionId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cancionId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -1,4 +1,5 @@
 using HerramientasdeProgramacion.API.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 namespace HerramientasdeProgramacion.MVC
@@ -15,6 +16,14 @@ namespace HerramientasdeProgramacion.MVC
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            // Agregar autenticación con cookies
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/Usuarios/Login";  
+                    options.AccessDeniedPath = "/Usuarios/AccesoDenegado"; 
+                });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -29,12 +38,12 @@ namespace HerramientasdeProgramacion.MVC
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Usuario}/{action=Login}/{id?}");
+                pattern: "{controller=Usuarios}/{action=Login}/{id?}");
 
             app.Run();
         }

@@ -1,32 +1,47 @@
-using HerramientasdeProgramacion.MVC.Models;
+﻿using HerramientasdeProgramacion.API.Data;
+using HerramientasdeProgramacion.Modelos.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 
 namespace HerramientasdeProgramacion.MVC.Controllers
 {
+    [Authorize(Roles = "Usuario,Artista,Admin")]
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly SqlServerHdPDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(SqlServerHdPDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
-        }
+            var model = new HomeViewModel
+            {
+                Albums = _context.Albumes
+                    .Include(a => a.AlbumesCanciones)
+                        .ThenInclude(ac => ac.Cancion)
+                            .ThenInclude(c => c.Artista)
+                    .ToList(),
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+                PlaylistsPublicas = _context.PlayLists
+                    .Where(p => p.EsPublica)
+                    .Include(p => p.Canciones)
+                        .ThenInclude(pc => pc.Cancion)
+                            .ThenInclude(c => c.Artista)
+                    .ToList(),
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+                CancionesSueltas = _context.Canciones
+                    .Include(c => c.Artista)
+                    .Where(c => !c.AlbumesCanciones.Any())
+                    .OrderByDescending(c => c.FechaSubida)
+                    .Take(20) // Limitar a las 20 canciones más recientes
+                    .ToList(),
+            };
+
+            return View(model);
         }
     }
 }

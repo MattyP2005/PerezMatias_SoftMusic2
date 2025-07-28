@@ -3,6 +3,12 @@
   "WorkspaceRootPath": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BB11753C-72FE-4CF0-9177-9D67E7EA5547}|..\\HerramientasdeProgramacion.MVC\\HerramientasdeProgramacion.MVC.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion.mvc\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB11753C-72FE-4CF0-9177-9D67E7EA5547}|..\\HerramientasdeProgramacion.MVC\\HerramientasdeProgramacion.MVC.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion.mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -23,12 +29,38 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "UsuariosController.cs",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Controllers\\UsuariosController.cs",
+              "RelativeDocumentMoniker": "..\\HerramientasdeProgramacion.MVC\\Controllers\\UsuariosController.cs",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Controllers\\UsuariosController.cs",
+              "RelativeToolTip": "..\\HerramientasdeProgramacion.MVC\\Controllers\\UsuariosController.cs",
+              "ViewState": "AgIAABwBAAAAAAAAAAAAADEBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T00:39:17.388Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Program.cs",
+              "RelativeDocumentMoniker": "..\\HerramientasdeProgramacion.MVC\\Program.cs",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Program.cs",
+              "RelativeToolTip": "..\\HerramientasdeProgramacion.MVC\\Program.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBYAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T23:59:19.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABRAAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAQwDMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-25T02:39:53.056Z",
               "EditorCaption": ""

@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\audios\" />
+    <Folder Include="wwwroot\perfiles\" />
     <Folder Include="wwwroot\portadas\" />
   </ItemGroup>
 

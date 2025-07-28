@@ -3,6 +3,39 @@
   "WorkspaceRootPath": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BB11753C-72FE-4CF0-9177-9D67E7EA5547}|..\\HerramientasdeProgramacion.MVC\\HerramientasdeProgramacion.MVC.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion.mvc\\views\\albumes\\ver.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB11753C-72FE-4CF0-9177-9D67E7EA5547}|..\\HerramientasdeProgramacion.MVC\\HerramientasdeProgramacion.MVC.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion.mvc\\views\\artistas\\subirportada.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB11753C-72FE-4CF0-9177-9D67E7EA5547}|..\\HerramientasdeProgramacion.MVC\\HerramientasdeProgramacion.MVC.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion.mvc\\views\\canciones\\subir.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB11753C-72FE-4CF0-9177-9D67E7EA5547}|..\\HerramientasdeProgramacion.MVC\\HerramientasdeProgramacion.MVC.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion.mvc\\views\\playlists\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB11753C-72FE-4CF0-9177-9D67E7EA5547}|..\\HerramientasdeProgramacion.MVC\\HerramientasdeProgramacion.MVC.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion.mvc\\views\\playlists\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB11753C-72FE-4CF0-9177-9D67E7EA5547}|..\\HerramientasdeProgramacion.MVC\\HerramientasdeProgramacion.MVC.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion.mvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB11753C-72FE-4CF0-9177-9D67E7EA5547}|..\\HerramientasdeProgramacion.MVC\\HerramientasdeProgramacion.MVC.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion.mvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB11753C-72FE-4CF0-9177-9D67E7EA5547}|..\\HerramientasdeProgramacion.MVC\\HerramientasdeProgramacion.MVC.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion.mvc\\views\\usuarios\\editarperfil.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB11753C-72FE-4CF0-9177-9D67E7EA5547}|..\\HerramientasdeProgramacion.MVC\\HerramientasdeProgramacion.MVC.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion.mvc\\views\\usuarios\\miperfil.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB11753C-72FE-4CF0-9177-9D67E7EA5547}|..\\HerramientasdeProgramacion.MVC\\HerramientasdeProgramacion.MVC.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion.mvc\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB11753C-72FE-4CF0-9177-9D67E7EA5547}|..\\HerramientasdeProgramacion.MVC\\HerramientasdeProgramacion.MVC.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion.mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|c:\\important\\universidad\\3er nivel\\herramientas de programacion\\preparacionprueba\\herramientasdeprogramacion\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{65052996-D28E-487F-83F2-B7483CBBCF94}|HerramientasdeProgramacion.API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -14,21 +47,164 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Ver.cshtml",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Views\\Albumes\\Ver.cshtml",
+              "RelativeDocumentMoniker": "..\\HerramientasdeProgramacion.MVC\\Views\\Albumes\\Ver.cshtml",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Views\\Albumes\\Ver.cshtml",
+              "RelativeToolTip": "..\\HerramientasdeProgramacion.MVC\\Views\\Albumes\\Ver.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE8AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T01:00:00.928Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SubirPortada.cshtml",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Views\\Artistas\\SubirPortada.cshtml",
+              "RelativeDocumentMoniker": "..\\HerramientasdeProgramacion.MVC\\Views\\Artistas\\SubirPortada.cshtml",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Views\\Artistas\\SubirPortada.cshtml",
+              "RelativeToolTip": "..\\HerramientasdeProgramacion.MVC\\Views\\Artistas\\SubirPortada.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T00:59:09.751Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Subir.cshtml",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Views\\Canciones\\Subir.cshtml",
+              "RelativeDocumentMoniker": "..\\HerramientasdeProgramacion.MVC\\Views\\Canciones\\Subir.cshtml",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Views\\Canciones\\Subir.cshtml",
+              "RelativeToolTip": "..\\HerramientasdeProgramacion.MVC\\Views\\Canciones\\Subir.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T00:57:35.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Views\\PlayLists\\Index.cshtml",
+              "RelativeDocumentMoniker": "..\\HerramientasdeProgramacion.MVC\\Views\\PlayLists\\Index.cshtml",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Views\\PlayLists\\Index.cshtml",
+              "RelativeToolTip": "..\\HerramientasdeProgramacion.MVC\\Views\\PlayLists\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T00:56:34.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Views\\PlayLists\\Details.cshtml",
+              "RelativeDocumentMoniker": "..\\HerramientasdeProgramacion.MVC\\Views\\PlayLists\\Details.cshtml",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Views\\PlayLists\\Details.cshtml",
+              "RelativeToolTip": "..\\HerramientasdeProgramacion.MVC\\Views\\PlayLists\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T00:55:33.433Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "..\\HerramientasdeProgramacion.MVC\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "..\\HerramientasdeProgramacion.MVC\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T00:53:56.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "..\\HerramientasdeProgramacion.MVC\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "..\\HerramientasdeProgramacion.MVC\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T00:52:43.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "EditarPerfil.cshtml",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Views\\Usuarios\\EditarPerfil.cshtml",
+              "RelativeDocumentMoniker": "..\\HerramientasdeProgramacion.MVC\\Views\\Usuarios\\EditarPerfil.cshtml",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Views\\Usuarios\\EditarPerfil.cshtml",
+              "RelativeToolTip": "..\\HerramientasdeProgramacion.MVC\\Views\\Usuarios\\EditarPerfil.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T00:52:04.093Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MiPerfil.cshtml",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Views\\Usuarios\\MiPerfil.cshtml",
+              "RelativeDocumentMoniker": "..\\HerramientasdeProgramacion.MVC\\Views\\Usuarios\\MiPerfil.cshtml",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Views\\Usuarios\\MiPerfil.cshtml",
+              "RelativeToolTip": "..\\HerramientasdeProgramacion.MVC\\Views\\Usuarios\\MiPerfil.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGQAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T00:50:05.059Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 9,
+              "Title": "UsuariosController.cs",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Controllers\\UsuariosController.cs",
+              "RelativeDocumentMoniker": "..\\HerramientasdeProgramacion.MVC\\Controllers\\UsuariosController.cs",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Controllers\\UsuariosController.cs",
+              "RelativeToolTip": "..\\HerramientasdeProgramacion.MVC\\Controllers\\UsuariosController.cs",
+              "ViewState": "AgIAABwBAAAAAAAAAAAAADEBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T00:39:17.388Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Program.cs",
+              "RelativeDocumentMoniker": "..\\HerramientasdeProgramacion.MVC\\Program.cs",
+              "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion.MVC\\Program.cs",
+              "RelativeToolTip": "..\\HerramientasdeProgramacion.MVC\\Program.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBYAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T23:59:19.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Important\\Universidad\\3er Nivel\\HERRAMIENTAS DE PROGRAMACION\\PreparacionPrueba\\HerramientasdeProgramacion\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABRAAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAQwDMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-25T02:39:53.056Z",
               "EditorCaption": ""

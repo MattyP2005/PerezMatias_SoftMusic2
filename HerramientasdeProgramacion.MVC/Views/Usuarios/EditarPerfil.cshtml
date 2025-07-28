@@ -2,7 +2,7 @@
 
 <h2 class="mb-4">Editar Perfil</h2>
 
-<form asp-action="EditarPerfil" asp-controller="Usuario" method="post" enctype="multipart/form-data">
+<form asp-action="EditarPerfil" asp-controller="Usuarios" method="post" enctype="multipart/form-data">
     <input type="hidden" asp-for="Id" />
 
     <div class="mb-3">
@@ -23,7 +23,7 @@
             <div class="form-check mt-2">
                 <input class="form-check-input" type="checkbox" name="EliminarImagen" id="EliminarImagen" />
                 <label class="form-check-label" for="EliminarImagen">Eliminar imagen actual</label>
-                <a href="@Url.Action("MiPerfil", "Usuario")">
+                <a href="@Url.Action("MiPerfil", "Usuarios")">
             </div>
         </div>
     }
