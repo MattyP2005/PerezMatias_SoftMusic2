@@ -42,7 +42,7 @@ namespace HerramientasdeProgramacion.API.Controllers
         public async Task<IActionResult> CrearPlayList([FromBody] string nombre)
         {
             var email = User.Identity?.Name;
-            var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == email);
+            var usuario = _context.Usuario.FirstOrDefault(u => u.Email == email);
 
             if (usuario == null)
                 return Unauthorized();

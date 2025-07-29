@@ -39,7 +39,7 @@ namespace HerramientasdeProgramacion.API.Controllers
         public async Task<IActionResult> CrearAlbum([FromBody] CreateAlbumDTOs dto)
         {
             var email = User.Identity?.Name;
-            var artista = _context.Usuarios.FirstOrDefault(u => u.Email == email);
+            var artista = _context.Usuario.FirstOrDefault(u => u.Email == email);
             if (artista == null)
                 return Unauthorized("Usuario no encontrado o no autorizado.");
 

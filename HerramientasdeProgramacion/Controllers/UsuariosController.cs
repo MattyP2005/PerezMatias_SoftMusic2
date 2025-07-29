@@ -31,7 +31,7 @@ namespace HerramientasdeProgramacion.API.Controllers
         [HttpGet]
         public IActionResult ObtenerUsuarios()
         {
-            var usuarios = _context.Usuarios.ToList();
+            var usuarios = _context.Usuario.ToList();
             return Ok(usuarios);
         }
 
@@ -52,23 +52,24 @@ namespace HerramientasdeProgramacion.API.Controllers
 
             var usuario = new Usuario
             {
+                Nombre = dto.Nombre,
                 Email = dto.Email,
                 PasswordHash = dto.PasswordHash,
                 Rol = dto.Rol,
                 Plan = dto.Plan
             };
 
-            _context.Usuarios.Add(usuario);
+            _context.Usuario.Add(usuario);
             _context.SaveChanges();
 
             return Ok("Usuario creado");
         }
 
-        /* POST: api/UsuarioApi/login
+        // POST: api/UsuarioApi/login
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginDTO login)
         {
-            var usuario = _context.Usuarios.SingleOrDefault(u =>
+            var usuario = _context.Usuario.SingleOrDefault(u =>
                 u.Email == login.Email && u.PasswordHash == login.PasswordHash);
 
             if (usuario == null)
@@ -96,7 +97,7 @@ namespace HerramientasdeProgramacion.API.Controllers
             {
                 token = new JwtSecurityTokenHandler().WriteToken(token)
             });
-        }*/
+        }
 
         // POST: api/UsuarioApi/login
         [Authorize]
@@ -104,7 +105,7 @@ namespace HerramientasdeProgramacion.API.Controllers
         public IActionResult VerPlan()
         {
             var email = User.Identity?.Name;
-            var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == email);
+            var usuario = _context.Usuario.FirstOrDefault(u => u.Email == email);
 
             if (usuario == null)
                 return Unauthorized();
@@ -127,7 +128,7 @@ namespace HerramientasdeProgramacion.API.Controllers
         [HttpDelete("{id}")]
         public IActionResult EliminarUsuario(int id)
         {
-            var usuario = _context.Usuarios
+            var usuario = _context.Usuario
                 .Include(u => u.PlayLists)
                 .Include(u => u.FormasPagos)
                 .FirstOrDefault(u => u.Id == id);
@@ -167,11 +168,18 @@ namespace HerramientasdeProgramacion.API.Controllers
             _context.FormasPagos.RemoveRange(formasPago);
 
             // 6. Finalmente, el usuario
-            _context.Usuarios.Remove(usuario);
+            _context.Usuario.Remove(usuario);
 
             _context.SaveChanges();
 
             return Ok("Usuario y todos sus datos han sido eliminados correctamente.");
+        }
+
+        // DTOs para crear usuario y login
+        public class LoginDTO
+        {
+            public string Email { get; set; }
+            public string PasswordHash { get; set; }
         }
     }
 }

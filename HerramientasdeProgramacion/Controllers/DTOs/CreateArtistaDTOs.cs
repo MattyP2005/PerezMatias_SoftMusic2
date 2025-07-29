@@ -13,6 +13,6 @@ namespace HerramientasdeProgramacion.API.Controllers.DTOs
 
         public string Pais { get; set; }
 
-        public IFormFile PortadaUrl { get; set; }  // Subir imagen del artista
+        public IFormFile Portada { get; set; }  // Subir imagen del artista
     }
 }

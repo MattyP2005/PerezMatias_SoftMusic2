@@ -227,25 +227,54 @@
       }
     },
     "/api/Artistas/crear": {
-      "get": {
+      "post": {
         "tags": [
           "Artistas"
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/CreateArtistaDTOs"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateArtistaDTOs"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateArtistaDTOs"
+                "required": [
+                  "Nombre"
+                ],
+                "type": "object",
+                "properties": {
+                  "Nombre": {
+                    "type": "string"
+                  },
+                  "Biografia": {
+                    "type": "string"
+                  },
+                  "FechaNacimiento": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Pais": {
+                    "type": "string"
+                  },
+                  "Portada": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "Nombre": {
+                  "style": "form"
+                },
+                "Biografia": {
+                  "style": "form"
+                },
+                "FechaNacimiento": {
+                  "style": "form"
+                },
+                "Pais": {
+                  "style": "form"
+                },
+                "Portada": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -308,19 +337,51 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/CreateCancionDTOs"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateCancionDTOs"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateCancionDTOs"
+                "required": [
+                  "ArtistaId",
+                  "Titulo",
+                  "Url"
+                ],
+                "type": "object",
+                "properties": {
+                  "Titulo": {
+                    "type": "string"
+                  },
+                  "Genero": {
+                    "type": "string"
+                  },
+                  "Url": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "FechaSubida": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "ArtistaId": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              },
+              "encoding": {
+                "Titulo": {
+                  "style": "form"
+                },
+                "Genero": {
+                  "style": "form"
+                },
+                "Url": {
+                  "style": "form"
+                },
+                "FechaSubida": {
+                  "style": "form"
+                },
+                "ArtistaId": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -360,19 +421,51 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/CreateCancionDTOs"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateCancionDTOs"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateCancionDTOs"
+                "required": [
+                  "ArtistaId",
+                  "Titulo",
+                  "Url"
+                ],
+                "type": "object",
+                "properties": {
+                  "Titulo": {
+                    "type": "string"
+                  },
+                  "Genero": {
+                    "type": "string"
+                  },
+                  "Url": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "FechaSubida": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "ArtistaId": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              },
+              "encoding": {
+                "Titulo": {
+                  "style": "form"
+                },
+                "Genero": {
+                  "style": "form"
+                },
+                "Url": {
+                  "style": "form"
+                },
+                "FechaSubida": {
+                  "style": "form"
+                },
+                "ArtistaId": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -685,6 +778,37 @@
         }
       }
     },
+    "/api/Usuarios/login": {
+      "post": {
+        "tags": [
+          "Usuarios"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Usuarios/plan": {
       "get": {
         "tags": [
@@ -778,7 +902,7 @@
             "type": "string",
             "nullable": true
           },
-          "portadaUrl": {
+          "portada": {
             "type": "string",
             "format": "binary",
             "nullable": true
@@ -786,46 +910,20 @@
         },
         "additionalProperties": false
       },
-      "CreateCancionDTOs": {
-        "required": [
-          "artistaId",
-          "titulo",
-          "url"
-        ],
-        "type": "object",
-        "properties": {
-          "titulo": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "genero": {
-            "type": "string",
-            "nullable": true
-          },
-          "url": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "fechaSubida": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "artistaId": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
       "CreateUsuarioDTOs": {
         "required": [
           "email",
+          "nombre",
           "passwordHash",
           "plan",
           "rol"
         ],
         "type": "object",
         "properties": {
+          "nombre": {
+            "minLength": 1,
+            "type": "string"
+          },
           "email": {
             "minLength": 1,
             "type": "string"
@@ -841,6 +939,20 @@
           "plan": {
             "minLength": 1,
             "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginDTO": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "passwordHash": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

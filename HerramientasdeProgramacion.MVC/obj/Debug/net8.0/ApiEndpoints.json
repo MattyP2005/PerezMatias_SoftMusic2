@@ -417,6 +417,22 @@
   },
   {
     "ContainingType": "HerramientasdeProgramacion.API.Controllers.UsuariosController",
+    "Method": "Login",
+    "RelativePath": "api/Usuarios/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "login",
+        "Type": "HerramientasdeProgramacion.API.Controllers.UsuariosController\u002BLoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HerramientasdeProgramacion.API.Controllers.UsuariosController",
     "Method": "VerPlan",
     "RelativePath": "api/Usuarios/plan",
     "HttpMethod": "GET",

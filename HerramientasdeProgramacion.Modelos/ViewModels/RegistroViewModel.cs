@@ -17,5 +17,8 @@ namespace HerramientasdeProgramacion.Modelos.ViewModels
 
         [Required]
         public string Plan { get; set; } // "Gratis" o "Premium"
+
+        [Required]
+        public string Rol { get; set; } // "Usuario", "Artista", "Admin"
     }
 }

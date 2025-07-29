@@ -1,0 +1,146 @@
+﻿@model HerramientasdeProgramacion.Modelos.PlayList
+
+@{
+    ViewData["Title"] = "Playlist - " + Model.Nombre;
+}
+
+<div class="container py-4">
+    <div class="d-flex align-items-center mb-4">
+        <img src="@(
+             Model.Canciones?.Select(pc => pc.Cancion?.Artista?.PortadaUrl)
+                 .FirstOrDefault(p => !string.IsNullOrEmpty(p)) ?? "/img/sin-portada.jpg"
+                                                                )" alt="Portada" class="rounded shadow" style="width: 180px; height: 180px; object-fit: cover; " />
+
+        <div class="ms-4 flex-grow-1">
+            <h1 class="display-5 fw-bold">@Model.Nombre</h1>
+            <p class="text-muted mb-1">
+                @Model.Usuario?.Email • @Model.Canciones?.Count canción(es) • creada el @Model.FechaCreacion.ToShortDateString()
+            </p>
+
+            <div>
+                <button class="btn btn-success me-2" onclick="reproducirPlaylist('@Model.Id', false)">
+                    <i class="bi bi-play-fill"></i> Reproducir
+                </button>
+                <button class="btn btn-outline-primary" onclick="reproducirPlaylist('@Model.Id', true)">
+                    <i class="bi bi-shuffle"></i> Aleatorio
+                </button>
+            </div>
+        </div>
+    </div>
+
+    @if (Model.Canciones == null || !Model.Canciones.Any())
+    {
+        <p class="text-muted fst-italic">No hay canciones en esta playlist.</p>
+    }
+    else
+    {
+        <div class="table-responsive shadow rounded">
+            <table class="table table-hover align-middle bg-white mb-0">
+                <thead class="table-light text-muted">
+                    <tr>
+                        <th style="width: 40px;">#</th>
+                        <th>Título</th>
+                        <th>Artista</th>
+                        <th>Reproducciones</th>
+                        <th>Duración</th>
+                        <th style="width: 140px;">Reproducir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var index = 1;
+                    }
+                    @foreach (var item in Model.Canciones)
+                    {
+                        var cancion = item.Cancion;
+                        var artista = cancion?.Artista;
+                        <tr data-playlist="@Model.Id" data-url="@cancion?.Url" data-titulo="@cancion?.Titulo" data-artista="@artista?.Nombre">
+                            <td>@index</td>
+                            <td>@cancion?.Titulo</td>
+                            <td>@artista?.Nombre</td>
+                            <td>@cancion?.Reproducciones.ToString("N0")</td>
+                            <td>@(cancion?.Duracion != null ? $"{(int)cancion.Duracion.TotalMinutes}:{cancion.Duracion.Seconds:D2}" : "—")</td>
+                            <td>
+                                <audio controls preload="none" style="width: 130px;" src="@cancion?.Url"></audio>
+                            </td>
+                        </tr>
+                        index++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+    <a href="@Url.Action("Index", "PlayList")" class="btn btn-secondary mt-4">
+        <i class="bi bi-arrow-left"></i> Volver a Playlists
+    </a>
+</div>
+
+<!-- Barra de reproducción fija global -->
+<div id="playerBar" class="fixed-bottom bg-dark text-white d-flex align-items-center p-3 shadow" style="height: 70px; display: none;">
+    <div class="flex-grow-1">
+        <div id="playerSongTitle" class="fw-semibold text-truncate" style="max-width: 400px;">Título de la canción</div>
+        <div id="playerArtist" class="text-muted small">Artista</div>
+    </div>
+    <audio id="playerAudio" controls style="width: 300px;"></audio>
+</div>
+
+<script>
+    const playerBar = document.getElementById("playerBar");
+    const playerAudio = document.getElementById("playerAudio");
+    const playerSongTitle = document.getElementById("playerSongTitle");
+    const playerArtist = document.getElementById("playerArtist");
+
+    let canciones = [];
+    let indexActual = 0;
+
+    function reproducirPlaylist(playlistId, aleatorio) {
+        const filas = document.querySelectorAll(`[data-playlist='${playlistId}']`);
+
+        canciones = Array.from(filas).map(f => ({
+            url: f.dataset.url,
+            titulo: f.dataset.titulo,
+            artista: f.dataset.artista
+        }));
+
+        if (aleatorio) {
+            canciones = canciones.sort(() => Math.random() - 0.5);
+        }
+
+        if (canciones.length === 0) return;
+
+        indexActual = 0;
+        reproducirCancion(indexActual);
+        playerBar.style.display = "flex";
+
+        resaltarFila(indexActual, playlistId);
+    }
+
+    function reproducirCancion(i) {
+        const cancion = canciones[i];
+        playerAudio.src = cancion.url;
+        playerAudio.play();
+        playerSongTitle.textContent = cancion.titulo;
+        playerArtist.textContent = cancion.artista;
+
+        resaltarFila(i, null);
+    }
+
+    function resaltarFila(i, playlistId) {
+        document.querySelectorAll("tr.table-primary").forEach(r => r.classList.remove("table-primary"));
+        const filas = playlistId
+            ? document.querySelectorAll(`[data-playlist='${playlistId}']`)
+            : document.querySelectorAll(`[data-playlist]`);
+        if (filas[i]) filas[i].classList.add("table-primary");
+    }
+
+    playerAudio.addEventListener("ended", () => {
+        indexActual++;
+        if (indexActual < canciones.length) {
+            reproducirCancion(indexActual);
+        } else {
+            playerBar.style.display = "none";
+            document.querySelectorAll("tr.table-primary").forEach(r => r.classList.remove("table-primary"));
+        }
+    });
+</script>

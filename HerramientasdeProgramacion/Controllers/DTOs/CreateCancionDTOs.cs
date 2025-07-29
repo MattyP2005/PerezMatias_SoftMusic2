@@ -11,7 +11,7 @@ namespace HerramientasdeProgramacion.API.Controllers.DTOs
 
         [Required]
 
-        public string Url { get; set; } // Donde se aloja la canción (puede ser local o simulada)
+        public IFormFile Url { get; set; } // Donde se aloja la canción (puede ser local o simulada)
 
         public DateTime FechaSubida { get; set; }
 

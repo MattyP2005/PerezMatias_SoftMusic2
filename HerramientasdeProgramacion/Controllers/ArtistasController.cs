@@ -2,6 +2,7 @@
 using HerramientasdeProgramacion.API.Data;
 using HerramientasdeProgramacion.Modelos;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HerramientasdeProgramacion.API.Controllers
 {
@@ -21,28 +22,25 @@ namespace HerramientasdeProgramacion.API.Controllers
         [HttpGet]
         public IActionResult GetArtistas()
         {
-            var artistas = _context.Usuarios.ToList();
+            var artistas = _context.Usuario.ToList();
             return Ok(artistas);
         }
 
         // GET: api/Artistas/5
-        [HttpGet]
-        [Route("{id}")]
+        [HttpGet("{id}")]
         public IActionResult GetArtista(int id)
         {
-            var artista = _context.Usuarios.Find(id);
+            var artista = _context.Usuario.Find(id);
             if (artista == null || artista.Rol != "Artista")
                 return NotFound("Artista no encontrado o no es un artista.");
             return Ok(artista);
         }
 
         // POST: api/Artistas
-        [HttpGet]
+        [HttpPost]
         [Route("crear")]
-        public async Task<IActionResult> CrearArtista([FromBody] CreateArtistaDTOs dto)
+        public async Task<IActionResult> CrearArtista([FromForm] CreateArtistaDTOs dto)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
             var artista = new Artista
             {
                 Nombre = dto.Nombre,
@@ -51,9 +49,9 @@ namespace HerramientasdeProgramacion.API.Controllers
                 Pais = dto.Pais,
             };
 
-            if (dto.PortadaUrl != null)
+            if (dto.Portada != null)
             {
-                var nombreArchivo = Guid.NewGuid().ToString() + Path.GetExtension(dto.PortadaUrl.FileName);
+                var nombreArchivo = Guid.NewGuid().ToString() + Path.GetExtension(dto.Portada.FileName);
                 var rutaCarpeta = Path.Combine(_env.WebRootPath, "portadas");
 
                 if (!Directory.Exists(rutaCarpeta))
@@ -63,7 +61,7 @@ namespace HerramientasdeProgramacion.API.Controllers
 
                 using (var stream = new FileStream(rutaCompleta, FileMode.Create))
                 {
-                    await dto.PortadaUrl.CopyToAsync(stream);
+                    await dto.Portada.CopyToAsync(stream);
                 }
 
                 artista.PortadaUrl = "/portadas/" + nombreArchivo;
@@ -78,9 +76,10 @@ namespace HerramientasdeProgramacion.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> ActualizarArtista(int id, [FromBody] CreateArtistaDTOs dto)
         {
+            var artista = await _context.Artistas.FindAsync(id);
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var artista = _context.Artistas.Find(id);
+            
             if (artista == null)
                 return NotFound("Artista no encontrado o no es un artista.");
             artista.Nombre = dto.Nombre;
@@ -88,7 +87,7 @@ namespace HerramientasdeProgramacion.API.Controllers
             artista.FechaNacimiento = dto.FechaNacimiento;
             artista.Pais = dto.Pais;
 
-            if (dto.PortadaUrl != null)
+            if (dto.Portada != null)
             {
                 if (!string.IsNullOrWhiteSpace(artista.PortadaUrl))
                 {
@@ -97,12 +96,12 @@ namespace HerramientasdeProgramacion.API.Controllers
                         System.IO.File.Delete(rutaVieja);
                 }
 
-                var nombreArchivo = Guid.NewGuid().ToString() + Path.GetExtension(dto.PortadaUrl.FileName);
+                var nombreArchivo = Guid.NewGuid().ToString() + Path.GetExtension(dto.Portada.FileName);
                 var rutaCompleta = Path.Combine(_env.WebRootPath, "portadas", nombreArchivo);
 
                 using (var stream = new FileStream(rutaCompleta, FileMode.Create))
                 {
-                    await dto.PortadaUrl.CopyToAsync(stream);
+                    await dto.Portada.CopyToAsync(stream);
                 }
 
                 artista.PortadaUrl = "/portadas/" + nombreArchivo;
@@ -116,12 +115,46 @@ namespace HerramientasdeProgramacion.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> EliminarArtista(int id)
         {
-            var artista = _context.Usuarios.Find(id);
-            if (artista == null || artista.Rol != "Artista")
-                return NotFound("Artista no encontrado o no es un artista.");
-            _context.Usuarios.Remove(artista);
-            await _context.SaveChangesAsync();
-            return NoContent();
+            var artista = _context.Artistas
+                .Include(a => a.Canciones)
+                .FirstOrDefault(a => a.Id == id);
+
+            if (artista == null)
+                return NotFound("Artista no encontrado.");
+
+            // 1. Eliminar canciones y archivos físicos
+            foreach (var cancion in artista.Canciones)
+            {
+                // Eliminar historial de esta canción
+                var historial = _context.Historiales.Where(h => h.CancionId == cancion.Id);
+                _context.Historiales.RemoveRange(historial);
+
+                // Eliminar de playlists
+                var enPlaylists = _context.PlayListsCanciones.Where(pc => pc.CancionId == cancion.Id);
+                _context.PlayListsCanciones.RemoveRange(enPlaylists);
+
+                // Eliminar archivo físico
+                var ruta = Path.Combine(_env.WebRootPath, cancion.Url.TrimStart('/'));
+                if (System.IO.File.Exists(ruta))
+                    System.IO.File.Delete(ruta);
+            }
+
+            _context.Canciones.RemoveRange(artista.Canciones);
+
+            // 2. Eliminar portada del artista (si existe)
+            if (!string.IsNullOrWhiteSpace(artista.PortadaUrl))
+            {
+                var rutaPortada = Path.Combine(_env.WebRootPath, artista.PortadaUrl.TrimStart('/'));
+                if (System.IO.File.Exists(rutaPortada))
+                    System.IO.File.Delete(rutaPortada);
+            }
+
+            // 3. Eliminar artista
+            _context.Artistas.Remove(artista);
+
+            _context.SaveChanges();
+
+            return Ok("Artista eliminado junto con sus canciones, álbumes y portada.");
         }
     }
 }

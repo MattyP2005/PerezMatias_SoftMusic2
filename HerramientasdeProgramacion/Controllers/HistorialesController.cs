@@ -25,7 +25,7 @@ namespace HerramientasdeProgramacion.API.Controllers
         public IActionResult RegistrarReproduccion(int cancionId)
         {
             var email = User.Identity?.Name;
-            var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == email);
+            var usuario = _context.Usuario.FirstOrDefault(u => u.Email == email);
 
             if (usuario == null)
                 return Unauthorized();
@@ -52,7 +52,7 @@ namespace HerramientasdeProgramacion.API.Controllers
         public IActionResult VerHistorial()
         {
             var email = User.Identity?.Name;
-            var usuario = _context.Usuarios
+            var usuario = _context.Usuario
                 .Include(u => u.Historiales)
                 .ThenInclude(h => h.Cancion)
                 .FirstOrDefault(u => u.Email == email);

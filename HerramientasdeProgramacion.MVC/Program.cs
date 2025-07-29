@@ -20,9 +20,12 @@ namespace HerramientasdeProgramacion.MVC
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
-                    options.LoginPath = "/Usuarios/Login";  
-                    options.AccessDeniedPath = "/Usuarios/AccesoDenegado"; 
+                    options.LoginPath = "/Usuario/Login";  
+                    options.AccessDeniedPath = "/Usuario/AccesoDenegado"; 
                 });
+
+            builder.Services.AddAuthorization();
+            builder.Services.AddSession();
 
             var app = builder.Build();
 
@@ -43,7 +46,7 @@ namespace HerramientasdeProgramacion.MVC
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Usuarios}/{action=Login}/{id?}");
+                pattern: "{controller=Usuario}/{action=Login}/{id?}");
 
             app.Run();
         }

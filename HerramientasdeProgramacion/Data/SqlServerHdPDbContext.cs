@@ -7,7 +7,7 @@ namespace HerramientasdeProgramacion.API.Data
     {
         public SqlServerHdPDbContext(DbContextOptions<SqlServerHdPDbContext> options) : base(options) { }
 
-        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
 
         public DbSet<Cancion> Canciones { get; set; }
 

@@ -1,0 +1,52 @@
+﻿@using HerramientasdeProgramacion.Modelos.ViewModels
+@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Iniciar Sesión";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h2 class="text-primary fw-bold">🎵 Iniciar Sesión</h2>
+    </div>
+
+    @if (TempData["MensajeEliminacion"] != null)
+    {
+        <div class="alert alert-success text-center fw-bold shadow-sm">
+            @TempData["MensajeEliminacion"]
+        </div>
+    }
+
+    @if (TempData["Mensaje"] != null)
+    {
+        <div class="alert alert-success text-center">
+            @TempData["Mensaje"]
+        </div>
+    }
+
+
+    <form asp-controller="Usuario" asp-action="Login" method="post" class="mx-auto" style="max-width: 350px;">
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label"></label>
+            <input asp-for="Password" type="password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+
+        <div class="text-center mt-3">
+            <p>
+                ¿No tienes una cuenta?
+                <a asp-controller="Usuario" asp-action="Registrar" class="text-decoration-none fw-semibold">
+                    Regístrate aquí
+                </a>
+            </p>
+        </div>
+    </form>
+</div>

@@ -47,13 +47,13 @@ namespace HerramientasdeProgramacion.API.Controllers
         [Authorize]
         [Route("CrearCancion")]
         [HttpPost]
-        public async Task<IActionResult> CrearCancion([FromBody] CreateCancionDTOs dto)
+        public async Task<IActionResult> CrearCancion([FromForm] CreateCancionDTOs dto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var email = User.Identity?.Name;
-            var usuario = _context.Usuarios.SingleOrDefault(u => u.Email == email);
+            var usuario = _context.Usuario.SingleOrDefault(u => u.Email == email);
 
             if (usuario == null)
                 return Unauthorized("Usuario no válido.");
@@ -63,45 +63,100 @@ namespace HerramientasdeProgramacion.API.Controllers
             if (yaExiste)
                 return Conflict("Ya existe una canción con ese nombre.");
 
-            // Crear objeto Cancion desde el DTO
+            // Validar extensión del archivo
+            var ext = Path.GetExtension(dto.Url.FileName).ToLower();
+            if (ext != ".mp3")
+                return BadRequest("Solo se permiten archivos .mp3");
+
+            // Guardar el archivo en disco
+            var nombreArchivo = Guid.NewGuid() + ".mp3";
+            var rutaCarpeta = Path.Combine(_env.WebRootPath, "canciones");
+
+            if (!Directory.Exists(rutaCarpeta))
+                Directory.CreateDirectory(rutaCarpeta);
+
+            var rutaCompleta = Path.Combine(rutaCarpeta, nombreArchivo);
+
+            using (var stream = new FileStream(rutaCompleta, FileMode.Create))
+            {
+                await dto.Url.CopyToAsync(stream);
+            }
+
+            // Crear objeto Cancion
             var cancion = new Cancion
             {
                 Titulo = dto.Titulo,
                 Genero = dto.Genero,
-                Url = dto.Url,
+                Url = "/canciones/" + nombreArchivo, // Ruta pública
                 FechaSubida = DateTime.UtcNow,
                 UsuarioId = usuario.Id,
-                ArtistaId = dto.ArtistaId // opcional si manejas Artista como entidad separada
+                ArtistaId = dto.ArtistaId
             };
 
             _context.Canciones.Add(cancion);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
-            return Ok("Canción subida correctamente.");
+            return Ok(new { Mensaje = "Canción subida correctamente", cancion.Url });
         }
 
         // PUT: api/Canciones/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> ActualizarCancion(int id, [FromBody] CreateCancionDTOs dto)
+        public async Task<IActionResult> ActualizarCancion(int id, [FromForm] CreateCancionDTOs dto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
+
             var email = User.Identity?.Name;
-            var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == email);
+            var usuario = _context.Usuario.FirstOrDefault(u => u.Email == email);
             if (usuario == null)
                 return Unauthorized();
+
             var cancion = _context.Canciones.FirstOrDefault(c => c.Id == id);
             if (cancion == null)
                 return NotFound("Canción no encontrada.");
-            // Solo permite actualizar si es el dueño o es Admin
+
+            // Solo dueño o admin puede modificar
             if (usuario.Rol != "Admin" && cancion.UsuarioId != usuario.Id)
                 return Forbid("No tienes permiso para actualizar esta canción.");
-            // Actualizar propiedades
+
+            // ✅ Si hay archivo nuevo, reemplazarlo
+            if (dto.Url != null)
+            {
+                var ext = Path.GetExtension(dto.Url.FileName).ToLower();
+                if (ext != ".mp3")
+                    return BadRequest("Solo se permiten archivos .mp3");
+
+                // Eliminar anterior si existe
+                if (!string.IsNullOrWhiteSpace(cancion.Url))
+                {
+                    var rutaVieja = Path.Combine(_env.WebRootPath, cancion.Url.TrimStart('/'));
+                    if (System.IO.File.Exists(rutaVieja))
+                        System.IO.File.Delete(rutaVieja);
+                }
+
+                // Guardar nuevo
+                var nuevoNombre = Guid.NewGuid().ToString() + ".mp3";
+                var nuevaRuta = Path.Combine(_env.WebRootPath, "canciones");
+
+                if (!Directory.Exists(nuevaRuta))
+                    Directory.CreateDirectory(nuevaRuta);
+
+                var rutaCompleta = Path.Combine(nuevaRuta, nuevoNombre);
+                using (var stream = new FileStream(rutaCompleta, FileMode.Create))
+                {
+                    await dto.Url.CopyToAsync(stream);
+                }
+
+                cancion.Url = "/canciones/" + nuevoNombre;
+            }
+
+            // Actualizar datos
             cancion.Titulo = dto.Titulo ?? cancion.Titulo;
             cancion.Genero = dto.Genero ?? cancion.Genero;
-            cancion.Url = dto.Url ?? cancion.Url;
+
             _context.Canciones.Update(cancion);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
+
             return Ok("Canción actualizada correctamente.");
         }
 
@@ -111,7 +166,7 @@ namespace HerramientasdeProgramacion.API.Controllers
         public IActionResult DescargarCancion(int id)
         {
             var email = User.Identity?.Name;
-            var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == email);
+            var usuario = _context.Usuario.FirstOrDefault(u => u.Email == email);
 
             if (usuario == null)
                 return Unauthorized();
@@ -144,7 +199,7 @@ namespace HerramientasdeProgramacion.API.Controllers
         public async Task<IActionResult> EliminarCancion(int id)
         {
             var email = User.Identity?.Name;
-            var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == email);
+            var usuario = _context.Usuario.FirstOrDefault(u => u.Email == email);
             if (usuario == null)
                 return Unauthorized();
 

@@ -271,3 +271,4 @@ C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueb
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\obj\Debug\net8.0\HerramientasdeProgramacion.API.pdb
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\obj\Debug\net8.0\HerramientasdeProgramacion.API.genruntimeconfig.cache
 C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\obj\Debug\net8.0\ref\HerramientasdeProgramacion.API.dll
+C:\Important\Universidad\3er Nivel\HERRAMIENTAS DE PROGRAMACION\PreparacionPrueba\HerramientasdeProgramacion\bin\Debug\net8.0\HerramientasdeProgramacion.API.staticwebassets.runtime.json
