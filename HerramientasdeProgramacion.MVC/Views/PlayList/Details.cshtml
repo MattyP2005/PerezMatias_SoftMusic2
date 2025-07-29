@@ -2,9 +2,17 @@
 
 @{
     ViewData["Title"] = "Playlist - " + Model.Nombre;
+    var apiBaseUrl = "https://localhost:7027";
 }
 
 <div class="container py-4">
+    @if (TempData["MensajeExito"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["MensajeExito"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
+    }
     <div class="d-flex align-items-center mb-4">
         <img src="@(
              Model.Canciones?.Select(pc => pc.Cancion?.Artista?.PortadaUrl)
@@ -14,7 +22,7 @@
         <div class="ms-4 flex-grow-1">
             <h1 class="display-5 fw-bold">@Model.Nombre</h1>
             <p class="text-muted mb-1">
-                @Model.Usuario?.Email • @Model.Canciones?.Count canción(es) • creada el @Model.FechaCreacion.ToShortDateString()
+                @Model.Artista?.Email • @Model.Canciones?.Count canción(es) • creada el @Model.FechaCreacion.ToShortDateString()
             </p>
 
             <div>
@@ -54,7 +62,9 @@
                     {
                         var cancion = item.Cancion;
                         var artista = cancion?.Artista;
-                        <tr data-playlist="@Model.Id" data-url="@cancion?.Url" data-titulo="@cancion?.Titulo" data-artista="@artista?.Nombre">
+                        var cancionUrl = apiBaseUrl + cancion?.Url;
+
+                        <tr data-playlist="@Model.Id" data-url="@cancionUrl" data-titulo="@cancion?.Titulo" data-artista="@artista?.Nombre">
                             <td>@index</td>
                             <td>@cancion?.Titulo</td>
                             <td>@artista?.Nombre</td>

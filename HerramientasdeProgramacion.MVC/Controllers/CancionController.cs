@@ -31,7 +31,7 @@ namespace HerramientasdeProgramacion.MVC.Controllers
         }
 
         // GET: Canciones/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> MisCanciones(int? id)
         {
             if (id == null)
             {

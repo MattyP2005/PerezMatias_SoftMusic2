@@ -13,6 +13,7 @@ namespace HerramientasdeProgramacion.MVC
             builder.Services.AddDbContext<SqlServerHdPDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnection")));
 
+            builder.Services.AddHttpClient();
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
@@ -39,6 +40,7 @@ namespace HerramientasdeProgramacion.MVC
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            
 
             app.UseRouting();
             app.UseAuthentication();

@@ -27,23 +27,23 @@ namespace HerramientasdeProgramacion.MVC.Controllers
                 .Include(ac => ac.AlbumesCanciones)
                     .ThenInclude(ac => ac.Cancion)
                         .ThenInclude(c => c.Artista)
-                .Include(a => a.Artista)
-                .Where(a => a.Artista.Email == Email)
+                .Include(a => a.Usuario)
+                .Where(a => a.Usuario.Email == Email)
                 .ToList();
 
             return View(albumes);
         }
 
         // GET: Albumes/Details/5
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Ver(int id)
         {
             var userEmail = User.Identity?.Name;
             var album = _context.Albumes
                 .Include(a => a.AlbumesCanciones)
                     .ThenInclude(ac => ac.Cancion)
                         .ThenInclude(c => c.Artista)
-                .Include(a => a.Artista)
-                .FirstOrDefault(a => a.Id == id && a.Artista.Email == userEmail);
+                .Include(a => a.Usuario)
+                .FirstOrDefault(a => a.Id == id && a.Usuario.Email == userEmail);
 
             if (album == null)
                 return NotFound();
@@ -62,15 +62,18 @@ namespace HerramientasdeProgramacion.MVC.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public async Task<IActionResult> Crear(string titulo, DateTime fechaLanzamiento)
+        public async Task<IActionResult> Crear(string titulo, DateTime fechaLanzamiento, string descripcion)
         {
             var userEmail = User.Identity?.Name;
-            var artista = _context.Usuario.FirstOrDefault(u => u.Email == userEmail);
+            var usuario = _context.Usuario.FirstOrDefault(u => u.Email == userEmail);
 
             var album = new Album
             {
                 Titulo = titulo,
                 FechaLanzamiento = fechaLanzamiento,
+                Descripcion = descripcion,
+                PortadaUrl = "/images/default-album-cover.png",
+                UsuarioId = usuario.Id,
             };
 
             _context.Albumes.Add(album);
@@ -79,20 +82,20 @@ namespace HerramientasdeProgramacion.MVC.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET: Album/AgregarCanciones/5
-        public IActionResult AgregarCanciones(int id)
+        // GET: Album/AgregarCancion/5
+        public IActionResult AgregarCancion(int id)
         {
             var userEmail = User.Identity?.Name;
+
             var album = _context.Albumes
-                .Include(a => a.Artista)
-                .FirstOrDefault(a => a.Id == id && a.Artista.Email == userEmail);
+                .Include(a => a.Usuario)
+                .FirstOrDefault(a => a.Id == id && a.Usuario.Email == userEmail);
 
             if (album == null)
                 return NotFound();
 
-            var canciones = _context.Canciones
-                .Where(c => c.Artista.Email == userEmail)
-                .ToList();
+            // 🔥 Carga todas las canciones disponibles (sin filtrar por usuario)
+            var canciones = _context.Canciones.ToList();
 
             var viewModel = new AgregarCancionViewModel
             {
@@ -111,13 +114,33 @@ namespace HerramientasdeProgramacion.MVC.Controllers
 
         // POST: Album/AgregarCanciones
         [HttpPost]
-        public IActionResult AgregarCanciones(AgregarCancionViewModel model)
+        public IActionResult AgregarCancion(AgregarCancionViewModel model)
         {
             var userEmail = User.Identity?.Name;
+
+            // Validación: evitar nulo
+            if (model.Canciones == null || model.Canciones.Count == 0)
+            {
+                // Recargar canciones si se vuelve a mostrar la vista
+                var cancionesDisponibles = _context.Canciones
+                    .Where(c => c.Artista.Email == userEmail)
+                    .Select(c => new CancionSeleccionada
+                    {
+                        CancionId = c.Id,
+                        Titulo = c.Titulo,
+                        Seleccionada = false
+                    }).ToList();
+
+                model.Canciones = cancionesDisponibles;
+
+                ModelState.AddModelError("", "Debes seleccionar al menos una canción.");
+                return View(model);
+            }
+
             var album = _context.Albumes
-                .Include(a => a.Artista)
+                .Include(a => a.Usuario)
                 .Include(a => a.AlbumesCanciones)
-                .FirstOrDefault(a => a.Id == model.AlbumId && a.Artista.Email == userEmail);
+                .FirstOrDefault(a => a.Id == model.AlbumId && a.Usuario.Email == userEmail);
 
             if (album == null) return NotFound();
 
@@ -153,7 +176,7 @@ namespace HerramientasdeProgramacion.MVC.Controllers
             {
                 return NotFound();
             }
-            ViewData["ArtistaId"] = new SelectList(_context.Usuario, "Id", "Email", album.ArtistaId);
+            ViewData["ArtistaId"] = new SelectList(_context.Usuario, "Id", "Email", album.UsuarioId);
             return View(album);
         }
 
@@ -189,7 +212,7 @@ namespace HerramientasdeProgramacion.MVC.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ArtistaId"] = new SelectList(_context.Usuario, "Id", "Email", album.ArtistaId);
+            ViewData["ArtistaId"] = new SelectList(_context.Usuario, "Id", "Email", album.UsuarioId);
             return View(album);
         }
 
@@ -202,7 +225,7 @@ namespace HerramientasdeProgramacion.MVC.Controllers
             }
 
             var album = await _context.Albumes
-                .Include(a => a.Artista)
+                .Include(a => a.Usuario)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (album == null)
             {

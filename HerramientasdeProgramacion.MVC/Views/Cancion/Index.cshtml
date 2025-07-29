@@ -1,14 +1,15 @@
 ﻿@model IEnumerable<HerramientasdeProgramacion.Modelos.Cancion>
 
 @{
-    ViewData["Title"] = "Todas las Canciones";
+    ViewData["Title"] = "Mis Canciones";
+    var apiBaseUrl = "https://localhost:7027"; 
 }
 
 <h2 class="mb-4 text-success text-center">🎼 Todas las Canciones</h2>
 
 @if (!Model.Any())
 {
-    <p class="text-muted text-center">No hay canciones disponibles aún.</p>
+    <p class="text-muted text-center">No subes ninguna cancion disponible aún.</p>
 }
 else
 {
@@ -16,8 +17,10 @@ else
         @foreach (var c in Model)
         {
             var portada = !string.IsNullOrEmpty(c.Artista?.PortadaUrl)
-            ? c.Artista.PortadaUrl
+            ? apiBaseUrl + c.Artista.PortadaUrl
             : "/img/sin-portada.jpg";
+
+            var cancionUrl = apiBaseUrl + c.Url;
 
             <div class="col">
                 <div class="card h-100 bg-dark text-white border-0 shadow-lg rounded-4">
@@ -35,18 +38,18 @@ else
                         <div class="mt-auto d-flex justify-content-center gap-2">
                             <button type="button"
                                     class="btn btn-outline-light rounded-circle"
-                                    onclick="reproducirCancion('@c.Url', '@c.Titulo', '@c.Artista?.Nombre', '@(c.Artista?.PortadaUrl ?? "/img/sin-portada.jpg")')"
+                                    onclick="reproducirCancion('@cancionUrl', '@c.Titulo', '@c.Artista?.Nombre', '@portada')"
                                     title="Reproducir">
                                 ▶️
                             </button>
 
-                            <a href="@c.Url" download class="btn btn-sm btn-success rounded-pill px-3">
+                            <a href="@cancionUrl" download class="btn btn-sm btn-success rounded-pill px-3">
                                 ⬇️ Descargar
                             </a>
 
                             <button type="button"
                                     class="btn btn-sm btn-primary rounded-pill px-3"
-                                    onclick="copiarUrl('@c.Url')">
+                                    onclick="copiarUrl('@cancionUrl')">
                                 🔗 Compartir
                             </button>
                         </div>
@@ -64,21 +67,16 @@ else
             const audio = document.getElementById("player-audio");
 
             playerBar.style.display = "flex";
-
             document.getElementById("player-title").innerText = titulo;
             document.getElementById("player-artist").innerText = artista;
             document.getElementById("player-img").src = portada || "/img/sin-portada.jpg";
 
-            if (!url.startsWith("/")) url = "/" + url;
             audio.src = url;
             audio.load();
             audio.play().catch(err => alert("No se pudo reproducir la canción"));
-
-            // Mostrar controles del audio
             audio.style.display = "block";
         }
 
-        // Botón Play/Pause en la barra
         document.getElementById("btn-play-pause").addEventListener("click", function () {
             const audio = document.getElementById("player-audio");
             if (audio.paused) {
@@ -89,10 +87,7 @@ else
         });
 
         function copiarUrl(url) {
-            if (!url.startsWith("/")) {
-                url = "/" + url;
-            }
-            navigator.clipboard.writeText(window.location.origin + url)
+            navigator.clipboard.writeText(url)
                 .then(() => alert("URL copiada al portapapeles"))
                 .catch(() => alert("No se pudo copiar el enlace"));
         }

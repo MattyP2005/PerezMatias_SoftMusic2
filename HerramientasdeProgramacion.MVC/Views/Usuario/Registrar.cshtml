@@ -34,6 +34,12 @@
         <span asp-validation-for="Plan" class="text-danger d-block"></span>
     </div>
 
+    <div class="mb-3 input-corto">
+        <label class="form-label">Tipo de Rol</label><br />
+        <input type="radio" asp-for="Rol" value="Usuario" checked /> Usuario
+        <input type="radio" asp-for="Rol" value="Artista" checked /> Artista
+        <span asp-validation-for="Rol" class="text-danger d-block"></span>
+
     <button type="submit" class="btn btn-success w-100">Registrarse</button>
 </form>
 

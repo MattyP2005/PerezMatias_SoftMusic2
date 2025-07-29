@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HerramientasdeProgramacion.Modelos")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ab049c742611fde48acd6783a10d0e9923341653")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6f5aa2f687680db540556123905c916d70611e65")]
 [assembly: System.Reflection.AssemblyProductAttribute("HerramientasdeProgramacion.Modelos")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HerramientasdeProgramacion.Modelos")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

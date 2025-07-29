@@ -1,5 +1,6 @@
 ﻿using HerramientasdeProgramacion.API.Data;
 using HerramientasdeProgramacion.Modelos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,11 +20,11 @@ namespace HerramientasdeProgramacion.MVC.Controllers
         public async Task<IActionResult> Index()
         {
             var playlists = _context.PlayLists
-                .Include(p => p.Usuario)
+                .Include(p => p.Artista)
                 .Include(p => p.Canciones)
                     .ThenInclude(pc => pc.Cancion)
                         .ThenInclude(c => c.Artista)
-                .Where(p => p.Usuario.Email == User.Identity.Name)
+                .Where(p => p.Artista.Email == User.Identity.Name)
                 .ToList();
 
             return View(playlists);
@@ -36,7 +37,7 @@ namespace HerramientasdeProgramacion.MVC.Controllers
                 return NotFound();
 
             var playlist = await _context.PlayLists
-                .Include(p => p.Usuario)
+                .Include(p => p.Artista)
                 .Include(p => p.Canciones)
                     .ThenInclude(pc => pc.Cancion)
                         .ThenInclude(c => c.Artista)
@@ -49,6 +50,7 @@ namespace HerramientasdeProgramacion.MVC.Controllers
         }
 
         // GET: PlayLists/Create
+        [Authorize(Roles = "Admin,Artista")]
         public IActionResult Create()
         {
             var userEmail = User.Identity?.Name;
@@ -57,48 +59,36 @@ namespace HerramientasdeProgramacion.MVC.Controllers
             if (usuario == null)
                 return Unauthorized();
 
-            if (!usuario.Plan.StartsWith("Premium"))
-            {
-                TempData["Error"] = "Solo los usuarios con plan Premium pueden crear playlists.";
-                return RedirectToAction("Index");
-            }
-
             return View();
         }
 
         // POST: PlayLists/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Artista")]
         public async Task<IActionResult> Create(string nombre)
         {
             var userEmail = User.Identity?.Name;
             var usuario = _context.Usuario.FirstOrDefault(u => u.Email == userEmail);
-            if (usuario == null) return Unauthorized();
 
-            if (!usuario.Plan.StartsWith("Premium"))
-            {
-                TempData["Error"] = "Solo los usuarios con plan Premium pueden crear playlists.";
-                return RedirectToAction("Index");
-            }
+            if (usuario == null)
+                return Unauthorized();
 
             var playlist = new PlayList
             {
                 Nombre = nombre,
-                UsuarioId = usuario.Id,
+                ArtistaId = usuario.Id,
                 FechaCreacion = DateTime.UtcNow,
                 EsPublica = true
             };
 
             _context.PlayLists.Add(playlist);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("AgregarCancion", new { id = playlist.Id });
         }
 
         // GET: Agregar Canciones a Playlist
-        public IActionResult AgregarCanciones(int id)
+        public IActionResult AgregarCancion(int id)
         {
             var playlist = _context.PlayLists
                 .Include(p => p.Canciones)
@@ -112,13 +102,17 @@ namespace HerramientasdeProgramacion.MVC.Controllers
             return View(playlist);
         }
 
-        // POST: Agregar Canciones a Playlist
+        // POST: PlayLists/AgregarCancion
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public IActionResult AgregarCanciones(int playlistId, int[] cancionesSeleccionadas)
+        public IActionResult AgregarCancion(int playlistId, int[] cancionesSeleccionadas)
         {
             foreach (var cancionId in cancionesSeleccionadas)
             {
-                var existe = _context.PlayListsCanciones.Any(pc => pc.PlaylistId == playlistId && pc.CancionId == cancionId);
+                var existe = _context.PlayListsCanciones
+                    .Any(pc => pc.PlaylistId == playlistId && pc.CancionId == cancionId);
+
                 if (!existe)
                 {
                     _context.PlayListsCanciones.Add(new PlayListCancion
@@ -130,60 +124,9 @@ namespace HerramientasdeProgramacion.MVC.Controllers
             }
 
             _context.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
-        // GET: PlayLists/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var playList = await _context.PlayLists.FindAsync(id);
-            if (playList == null)
-            {
-                return NotFound();
-            }
-            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "Email", playList.UsuarioId);
-            return View(playList);
-        }
-
-        // POST: PlayLists/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,FechaCreacion,UsuarioId,EsPublica")] PlayList playList)
-        {
-            if (id != playList.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(playList);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PlayListExists(playList.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "Email", playList.UsuarioId);
-            return View(playList);
+            TempData["MensajeExito"] = "🎉 Canciones agregadas correctamente.";
+            return RedirectToAction("Details", new { id = playlistId });
         }
 
         // GET: PlayLists/Delete/5
@@ -195,7 +138,7 @@ namespace HerramientasdeProgramacion.MVC.Controllers
             }
 
             var playList = await _context.PlayLists
-                .Include(p => p.Usuario)
+                .Include(p => p.Artista)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (playList == null)
             {

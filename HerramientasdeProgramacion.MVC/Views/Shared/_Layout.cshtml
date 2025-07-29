@@ -3,17 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SpotifyClone</title>
+    <title>@ViewData["Title"] - SoftMusic</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/SpotifyClone.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SoftMusic.styles.css" asp-append-version="true" />
     <link rel="icon" type="image/png" href="~/SoftMusic.png" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SpotifyClone</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SoftMusic</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -41,6 +41,9 @@
                         <li>
                             <a class="nav-link text-light" asp-controller="Artista" asp-action="Index">Artistas</a>
                         </li>
+                        <div class="ms-auto">
+                            <partial name="_LoginPartial" />
+                        </div>
                     </ul>
                 </div>
             </div>

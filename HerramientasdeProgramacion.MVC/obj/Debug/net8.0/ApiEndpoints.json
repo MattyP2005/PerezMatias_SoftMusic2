@@ -145,14 +145,34 @@
     "ContainingType": "HerramientasdeProgramacion.API.Controllers.ArtistasController",
     "Method": "CrearArtista",
     "RelativePath": "api/Artistas/crear",
-    "HttpMethod": "GET",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
-        "Type": "HerramientasdeProgramacion.API.Controllers.DTOs.CreateArtistaDTOs",
-        "IsRequired": true
+        "Name": "Nombre",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Biografia",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FechaNacimiento",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "Pais",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Portada",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -197,9 +217,29 @@
         "IsRequired": true
       },
       {
-        "Name": "dto",
-        "Type": "HerramientasdeProgramacion.API.Controllers.DTOs.CreateCancionDTOs",
-        "IsRequired": true
+        "Name": "Titulo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Genero",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Url",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "FechaSubida",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "ArtistaId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -229,9 +269,29 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
-        "Type": "HerramientasdeProgramacion.API.Controllers.DTOs.CreateCancionDTOs",
-        "IsRequired": true
+        "Name": "Titulo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Genero",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Url",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "FechaSubida",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "ArtistaId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Inicio";
+    var apiBaseUrl = "https://localhost:7027";
 }
 
 <div class="container text-white">
@@ -40,7 +41,7 @@
 
             <div class="col">
                 <div class="card bg-dark text-white border-0 shadow-sm h-100">
-                    <a href="@Url.Action("Ver", "PlayList", new { id = playlist.Id })" class="text-decoration-none text-white">
+                    <a href="@Url.Action("Details", "PlayList", new { id = playlist.Id })" class="text-decoration-none text-white">
                         <div class="ratio ratio-1x1">
                             <img src="@portada" class="card-img-top object-fit-cover" alt="Portada playlist" />
                         </div>
@@ -69,6 +70,7 @@
             @foreach (var c in Model.CancionesSueltas)
             {
                 var portada = c.Artista?.PortadaUrl ?? "/img/sin-portada.jpg";
+                var cancionUrl = apiBaseUrl + c.Url;
 
                 <div class="col">
                     <div class="card bg-dark text-white border-0 shadow-sm h-100">
@@ -81,7 +83,7 @@
 
                             <button class="btn btn-sm btn-outline-info w-100 mb-2"
                                     onclick="reproducirCancion({
-                                            url: '@c.Url',
+                                            url: '@cancionUrl',
                                             titulo: '@c.Titulo',
                                             artista: '@c.Artista?.Nombre',
                                             portada: '@(c.Artista?.PortadaUrl ?? "/img/sin-portada.jpg")'
@@ -92,10 +94,15 @@
 
 
                             <div class="d-flex justify-content-between mt-auto">
-                                <a href="@c.Url" download class="btn btn-sm btn-success rounded-pill px-3">
+                                <a asp-controller="Home" asp-action="DescargarCancion" asp-route-id="@c.Id"
+                                   class="btn btn-sm btn-success rounded-pill px-3">
                                     ⬇️ Descargar
                                 </a>
-                                <button class="btn btn-sm btn-outline-light" onclick="copiarUrl('@c.Url')">🔗</button>
+                                <button type="button"
+                                        class="btn btn-sm btn-primary rounded-pill px-3"
+                                        onclick="copiarUrl('@cancionUrl')">
+                                    🔗 Compartir
+                                </button>
                             </div>
                         </div>
                     </div>

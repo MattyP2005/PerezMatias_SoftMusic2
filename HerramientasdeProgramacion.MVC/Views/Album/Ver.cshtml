@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Álbum: " + Model.Titulo;
+    var apiBaseUrl = "https://localhost:7027";
 }
 
 <div class="bg-dark text-white p-4 rounded shadow mb-5">
@@ -55,6 +56,7 @@
                     {
                         var cancion = ac.Cancion;
                         var artista = cancion?.Artista;
+                        var cancionUrl = apiBaseUrl + cancion?.Url;
 
                         <tr>
                             <td>@index</td>
@@ -64,7 +66,7 @@
                             <td>@(cancion?.Duracion != null ? $"{(int)cancion.Duracion.TotalMinutes}:{cancion.Duracion.Seconds:D2}" : "—")</td>
                             <td>
                                 <button class="btn btn-outline-light btn-sm"
-                                        onclick="reproducirEnBarra('@cancion?.Url', '@cancion?.Titulo', '@artista?.Nombre')">
+                                        onclick="reproducirEnBarra('@cancionUrl', '@cancion?.Titulo', '@artista?.Nombre')">
                                     <i class="bi bi-play-circle"></i>
                                 </button>
                             </td>
@@ -102,19 +104,20 @@
     const tituloCancion = document.getElementById("tituloCancion");
     const nombreArtista = document.getElementById("nombreArtista");
 
-    // Array con las canciones del álbum (con info para mostrar)
     const canciones = [
         @foreach (var ac in Model.AlbumesCanciones)
         {
-                    var cancion = ac.Cancion;
-                    var artista = cancion?.Artista;
-                    <text>
-                    {
-                        url: '@cancion?.Url',
-                        titulo: '@cancion?.Titulo.Replace("'", "\\'")',
-                        artista: '@artista?.Nombre.Replace("'", "\\'")'
-                    },
-                    </text>
+                var cancion = ac.Cancion;
+                var artista = cancion?.Artista;
+                var cancionUrl = apiBaseUrl + cancion?.Url;
+
+                <text>
+                {
+                    url: '@cancionUrl',
+                    titulo: '@cancion?.Titulo?.Replace("'", "\\'")',
+                    artista: '@artista?.Nombre?.Replace("'", "\\'")'
+                },
+                </text>
         }
     ];
 

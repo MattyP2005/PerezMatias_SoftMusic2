@@ -36,6 +36,8 @@ namespace HerramientasdeProgramacion.Modelos
 
         public ICollection<FormaPago> FormasPagos { get; set; }
 
+        public ICollection<Cancion> CancionesSubidas { get; set; }
+
         public List<Album> Albumes { get; set; }
     }
 }

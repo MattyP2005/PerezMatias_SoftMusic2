@@ -1,7 +1,17 @@
 ﻿@model IEnumerable<HerramientasdeProgramacion.Modelos.PlayList>
+@using System.Security.Claims
+@{
+    var rol = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+}
 
 @{
     ViewData["Title"] = "Playlists disponibles";
+}
+@if (rol == "Admin" || rol == "Artista")
+{
+    <a asp-controller="PlayList" asp-action="Create" class="btn btn-success mb-3">
+        <i class="bi bi-plus-circle me-1"></i> Crear Playlist
+    </a>
 }
 
 <h2 class="mb-4 text-primary">🎧 Playlists disponibles</h2>
@@ -28,15 +38,22 @@ else
                     </div>
                     <div class="card-body">
                         <h5 class="card-title text-info">@playlist.Nombre</h5>
-                        <p class="card-text text-white-50 mb-1">@playlist.Usuario?.Email</p>
+                        <p class="card-text text-white-50 mb-1">@playlist.Artista?.Email</p>
                         <p class="card-text text-muted">@totalCanciones canción(es)</p>
-                        <a href="@Url.Action("Ver", "PlayList", new { id = playlist.Id })"
+                        <a href="@Url.Action("Details", "PlayList", new { id = playlist.Id })"
                            class="btn btn-outline-info btn-sm rounded-pill">
                             Ver
                         </a>
+                        @if (playlist.Artista?.Email == User.Identity?.Name)
+                        {
+                            <a href="@Url.Action("AgregarCancion", "PlayList", new { id = playlist.Id })"
+                               class="btn btn-outline-success btn-sm rounded-pill mt-2">
+                                ➕ Agregar Canciones
+                            </a>
+                        }
                     </div>
                 </div>
-            </div>
+            </div> 
         }
     </div>
 }

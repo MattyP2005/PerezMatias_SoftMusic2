@@ -16,10 +16,10 @@ namespace HerramientasdeProgramacion.Modelos
 
         public DateTime FechaCreacion { get; set; }
 
-        // Usuario dueño de la playlist
-        public int UsuarioId { get; set; }
+        // Artista dueño de la playlist
+        public int ArtistaId { get; set; }
 
-        public Usuario Usuario { get; set; }
+        public Usuario Artista { get; set; }
 
         // Indica si la playlist es pública o privada
         public bool EsPublica { get; set; } = false; // Por defecto, privada

@@ -17,10 +17,10 @@ namespace HerramientasdeProgramacion.Modelos
         public string PortadaUrl { get; set; } // URL o ruta relativa a la portada del álbum
 
         // Relación con Artista
-        public int ArtistaId { get; set; }
+        public int UsuarioId { get; set; }
 
-        [ForeignKey("ArtistaId")]
-        public Usuario Artista { get; set; }
+        [ForeignKey("UsuarioId")]
+        public Usuario Usuario { get; set; }
 
         // Canciones que contiene el álbum
         public ICollection<AlbumCancion> AlbumesCanciones { get; set; }

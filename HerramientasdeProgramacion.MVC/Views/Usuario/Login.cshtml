@@ -24,29 +24,37 @@
         </div>
     }
 
-
-    <form asp-controller="Usuario" asp-action="Login" method="post" class="mx-auto" style="max-width: 350px;">
-        <div class="mb-3">
-            <label asp-for="Email" class="form-label"></label>
-            <input asp-for="Email" class="form-control" />
-            <span asp-validation-for="Email" class="text-danger"></span>
+    <!-- Contenedor que centra imagen y formulario y limita ancho -->
+    <div class="mx-auto" style="max-width: 350px;">
+        <!-- Imagen centrada -->
+        <div class="text-center mb-3">
+            <img src="~/SoftMusic.png" alt="Logo" style="max-width: 200px;" />
         </div>
 
-        <div class="mb-3">
-            <label asp-for="Password" class="form-label"></label>
-            <input asp-for="Password" type="password" class="form-control" />
-            <span asp-validation-for="Password" class="text-danger"></span>
-        </div>
+        <!-- Formulario -->
+        <form asp-controller="Usuario" asp-action="Login" method="post">
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
 
-        <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
 
-        <div class="text-center mt-3">
-            <p>
-                ¿No tienes una cuenta?
-                <a asp-controller="Usuario" asp-action="Registrar" class="text-decoration-none fw-semibold">
-                    Regístrate aquí
-                </a>
-            </p>
-        </div>
-    </form>
+            <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+
+            <div class="text-center mt-3">
+                <p>
+                    ¿No tienes una cuenta?
+                    <a asp-controller="Usuario" asp-action="Registrar" class="text-decoration-none fw-semibold">
+                        Regístrate aquí
+                    </a>
+                </p>
+            </div>
+        </form>
+    </div>
 </div>

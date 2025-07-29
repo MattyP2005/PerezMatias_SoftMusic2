@@ -6,10 +6,11 @@
 
 <h2>Crear Playlist</h2>
 
-<form asp-action="Crear" method="post">
-    <div class="form-group">
-        <label>Nombre</label>
-        <input name="nombre" class="form-control" required />
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre de la Playlist</label>
+        <input type="text" name="nombre" class="form-control" required />
     </div>
-    <button class="btn btn-success mt-2" type="submit">Crear</button>
+    <button type="submit" class="btn btn-primary">Crear</button>
 </form>
+
